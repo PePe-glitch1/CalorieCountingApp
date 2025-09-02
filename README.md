@@ -1,2 +1,2 @@
 # CalorieCountingApp
-Мобільний застосунок для підрахунку калорій та відстеження харчування. Дозволяє додавати продукти вручну, вести історію споживання, переглядати статистику та контролювати денну норму калорій. Створений на Kotlin з використанням Room, RecyclerView та сучасного UI.
+A mobile application for tracking calories and managing nutrition. It allows users to manually add food items, keep a history of consumption, view statistics, and monitor daily calorie limits. Built with Kotlin using Room, RecyclerView, and a modern UI.
