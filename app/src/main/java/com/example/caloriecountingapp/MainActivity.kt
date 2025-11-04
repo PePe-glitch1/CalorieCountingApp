@@ -62,13 +62,13 @@ private fun TopBar (name: String) {
         ) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Image(
-                    painter = painterResource(id = R.drawable.im_profil_imeg),
+                    painter = painterResource(id = R.drawable.im_profile_image),
                     contentDescription = "menuIcon",
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
                         .size(62.dp)
                         .clip(CircleShape)
-                    )
+                )
                 Column (modifier = Modifier.padding(start = 14.dp)) {
                     Text(text = "Welcome")
                     Text(text = name)
@@ -79,7 +79,7 @@ private fun TopBar (name: String) {
                     horizontalArrangement = Arrangement.spacedBy(24.dp, Alignment.End)
                 ) {
                     Image(
-                        painter = painterResource(id = R.drawable.ic_fined),
+                        painter = painterResource(id = R.drawable.ic_finder),
                         contentDescription = "finder",
                         modifier = Modifier.size(20.dp)
                     )
