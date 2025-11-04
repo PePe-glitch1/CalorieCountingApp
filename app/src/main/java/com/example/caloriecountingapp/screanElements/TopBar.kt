@@ -3,6 +3,7 @@ package com.example.caloriecountingapp.screanElements
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.Text
@@ -16,11 +17,12 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.example.caloriecountingapp.R
 
+
 @Composable
 fun TopBar(name: String = "User Name") {
     Card(
         modifier = Modifier
-            .padding(top = 55.dp, start = 14.dp, end = 14.dp)
+            .padding(top = 55.dp)
             .height(62.dp)
             .fillMaxWidth()
     ) {
