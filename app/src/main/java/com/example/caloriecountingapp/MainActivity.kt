@@ -27,6 +27,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.caloriecountingapp.screanElements.TopBar
 
 
 class MainActivity : ComponentActivity() {
@@ -47,49 +48,3 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-
-@Composable
-private fun TopBar (name: String) {
-    Card(
-        modifier = Modifier
-            .padding(top = 55.dp, start = 14.dp, end = 14.dp)
-            .height(62.dp)
-    ) {
-        Box(
-            modifier = Modifier
-                .background(Color.White)
-                .fillMaxSize(),
-        ) {
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Image(
-                    painter = painterResource(id = R.drawable.im_profile_image),
-                    contentDescription = "menuIcon",
-                    contentScale = ContentScale.Crop,
-                    modifier = Modifier
-                        .size(62.dp)
-                        .clip(CircleShape)
-                )
-                Column (modifier = Modifier.padding(start = 14.dp)) {
-                    Text(text = "Welcome")
-                    Text(text = name)
-                }
-                Row (
-                    modifier = Modifier.fillMaxSize(),
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.spacedBy(24.dp, Alignment.End)
-                ) {
-                    Image(
-                        painter = painterResource(id = R.drawable.ic_finder),
-                        contentDescription = "finder",
-                        modifier = Modifier.size(20.dp)
-                    )
-                    Image(
-                        painter = painterResource(id = R.drawable.ic_notification),
-                        contentDescription = "notification",
-                        modifier = Modifier.size(20.dp)
-                    )
-                }
-            }
-        }
-    }
-}
