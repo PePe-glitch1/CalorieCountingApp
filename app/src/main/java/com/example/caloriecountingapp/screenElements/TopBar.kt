@@ -1,4 +1,4 @@
-package com.example.caloriecountingapp.screanElements
+package com.example.caloriecountingapp.screenElements
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
