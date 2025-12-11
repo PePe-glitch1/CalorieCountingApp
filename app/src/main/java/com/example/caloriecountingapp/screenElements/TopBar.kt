@@ -1,7 +1,9 @@
 package com.example.caloriecountingapp.screenElements
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.shape.CircleShape
@@ -43,6 +45,7 @@ fun TopBar(name: String = "User Name") {
                     modifier = Modifier
                         .size(62.dp)
                         .clip(CircleShape)
+                        .clickable { Log.d("TopBar", "Profile image clicked") }
                 )
                 Spacer(Modifier.width(12.dp))
                 Column {
@@ -54,13 +57,17 @@ fun TopBar(name: String = "User Name") {
                 Image(
                     painter = painterResource(id = R.drawable.ic_finder),
                     contentDescription = "finder",
-                    modifier = Modifier.size(20.dp)
+                    modifier = Modifier
+                        .size(20.dp)
+                        .clickable { Log.d("TopBar", "Finder image clicked") }
                 )
                 Spacer(Modifier.width(16.dp))
                 Image(
                     painter = painterResource(id = R.drawable.ic_notification),
                     contentDescription = "notification",
-                    modifier = Modifier.size(20.dp)
+                    modifier = Modifier
+                        .size(20.dp)
+                        .clickable { Log.d("TopBar", "Notification image clicked") }
                 )
             }
         }
