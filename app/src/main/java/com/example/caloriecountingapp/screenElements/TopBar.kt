@@ -63,10 +63,10 @@ fun TopBar(name: String = "User Name") {
                 )
                 Spacer(Modifier.width(16.dp))
                 Image(
-                    painter = painterResource(id = R.drawable.ic_notification),
+                    painter = painterResource(id = R.drawable.ic_notification_false),
                     contentDescription = "notification",
                     modifier = Modifier
-                        .size(20.dp)
+                        .size(21.dp)
                         .clickable { Log.d("TopBar", "Notification image clicked") }
                 )
             }
