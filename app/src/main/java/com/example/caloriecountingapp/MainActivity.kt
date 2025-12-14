@@ -19,10 +19,10 @@ class MainActivity : ComponentActivity() {
         setContent {
             Column (
                 modifier = Modifier
-                    .background(Color.Gray)
+                    .background(Color.White)
                     .fillMaxSize(),
             ) {
-                TopBar(name = "Top Bar")
+                TopBar(name = "Slava")
 
             }
 
