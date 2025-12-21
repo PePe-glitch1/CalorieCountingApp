@@ -1,6 +1,6 @@
 package com.example.caloriecountingapp.calculationLogic
 
-object CalculatorCalorie {
+private object CalculatorCalorie {
     fun сalculatingCaloriesAndWater(params: UserParams) : DailyResult {
 
         //BMR
@@ -50,5 +50,11 @@ object CalculatorCalorie {
             carbohydrates = carbohydrates / 4,
             water = water
         )
+    }
+}
+
+class RecalculateCalorie () {
+    operator fun invoke (params: UserParams): DailyResult {
+        return CalculatorCalorie.сalculatingCaloriesAndWater(params)
     }
 }
