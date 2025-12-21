@@ -33,13 +33,13 @@ val Kurale_reg = FontFamily(
 fun TopBar(name: String = "User Name") {
     Card(
         modifier = Modifier
-            .padding(top = 45.dp)
-            .height(62.dp)
             .fillMaxWidth()
+            .statusBarsPadding()
     ) {
         Row(
             modifier = Modifier
-                .fillMaxSize()
+                .fillMaxWidth()
+                .height(62.dp)
                 .background(Color.White)
                 .padding(horizontal = 14.dp),
             verticalAlignment = Alignment.CenterVertically,
@@ -59,14 +59,14 @@ fun TopBar(name: String = "User Name") {
                 Column{
                     Text(
                         text = name,
-                        fontSize = 19.sp,
+                        fontSize = 20.sp,
                         fontFamily = Kurale_reg,
                     )
 
                     Text(
                         text = "-day Plan Streak",
                         color = Color.Gray,
-                        fontSize = 13.sp,
+                        fontSize = 14.sp,
                         fontFamily = Kurale_reg,
                     )
                 }
