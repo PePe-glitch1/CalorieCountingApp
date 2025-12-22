@@ -1,6 +1,9 @@
 package com.example.caloriecountingapp.businessLogic
 
+import kotlin.TODO
+
 data class DailyResult(
+    val userId : String,
     val bmr: Double,
     val tdee: Double,
     val resultCalories: Int,

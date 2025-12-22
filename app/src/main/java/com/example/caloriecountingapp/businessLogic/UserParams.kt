@@ -4,6 +4,7 @@ import com.example.caloriecountingapp.businessLogic.calculationLogic.LifeActivit
 import com.example.caloriecountingapp.businessLogic.calculationLogic.TargetInWeight
 
 data class UserParams(
+    val userId : String,
     val isMale: Boolean,
     val age: Int,
     val massKg: Double,

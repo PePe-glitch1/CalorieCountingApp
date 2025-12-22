@@ -45,13 +45,14 @@ private object CalculatorCalorie {
             LifeActivityLevel.VERY_ACTIVE -> params.massKg * 45.0  // Very Active
         }
         return DailyResult(
+            userId = params.userId,
             bmr = bmr,
             tdee = tdee,
             resultCalories = resultCalories.toInt(),
             proteins = proteins / 4,
             fats = fats / 9,
             carbohydrates = carbohydrates / 4,
-            water = water
+            water = water,
         )
     }
 }
