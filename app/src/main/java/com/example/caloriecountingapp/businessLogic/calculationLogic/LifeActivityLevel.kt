@@ -1,4 +1,4 @@
-package com.example.caloriecountingapp.calculationLogic
+package com.example.caloriecountingapp.businessLogic.calculationLogic
 
 enum class LifeActivityLevel(val factor : Double) {
     MINIMUM(1.2),

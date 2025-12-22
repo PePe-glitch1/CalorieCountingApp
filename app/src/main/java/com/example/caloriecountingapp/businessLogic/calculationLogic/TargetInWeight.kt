@@ -1,4 +1,4 @@
-package com.example.caloriecountingapp.calculationLogic
+package com.example.caloriecountingapp.businessLogic.calculationLogic
 
 enum class TargetInWeight(val factor: Int) {
     LOSE_WEIGHT(-500),

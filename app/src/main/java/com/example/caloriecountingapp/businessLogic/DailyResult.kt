@@ -1,4 +1,4 @@
-package com.example.caloriecountingapp.calculationLogic
+package com.example.caloriecountingapp.businessLogic
 
 data class DailyResult(
     val bmr: Double,

@@ -59,14 +59,14 @@ fun TopBar(name: String = "User Name") {
                 Column{
                     Text(
                         text = name,
-                        fontSize = 20.sp,
+                        fontSize = 19.sp,
                         fontFamily = Kurale_reg,
                     )
 
                     Text(
                         text = "-day Plan Streak",
                         color = Color.Gray,
-                        fontSize = 14.sp,
+                        fontSize = 13.sp,
                         fontFamily = Kurale_reg,
                     )
                 }

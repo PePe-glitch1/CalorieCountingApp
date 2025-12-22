@@ -1,4 +1,7 @@
-package com.example.caloriecountingapp.calculationLogic
+package com.example.caloriecountingapp.businessLogic
+
+import com.example.caloriecountingapp.businessLogic.calculationLogic.LifeActivityLevel
+import com.example.caloriecountingapp.businessLogic.calculationLogic.TargetInWeight
 
 data class UserParams(
     val isMale: Boolean,
