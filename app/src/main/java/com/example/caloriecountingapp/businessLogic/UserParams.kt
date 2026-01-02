@@ -13,8 +13,9 @@ data class UserParams(
     val target: TargetInWeight,
 ) {
     init {
-        require(age in 1..130)         { "INVALID_AGE" }
-        require(massKg in 1.0..300.0)  { "INVALID_MASS" }
-        require(heightCm in 50..250)   { "INVALID_HEIGHT" }
+        require(userId.isNotEmpty()) { "INVALID_USER_ID" }
+        require(age in 1..130) { "INVALID_AGE" }
+        require(massKg in 1.0..300.0) { "INVALID_MASS" }
+        require(heightCm in 50..250) { "INVALID_HEIGHT" }
     }
 }

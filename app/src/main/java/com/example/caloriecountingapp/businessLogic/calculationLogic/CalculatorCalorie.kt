@@ -3,6 +3,7 @@ package com.example.caloriecountingapp.businessLogic.calculationLogic
 import com.example.caloriecountingapp.businessLogic.DailyResult
 import com.example.caloriecountingapp.businessLogic.UserParams
 
+
 private object CalculatorCalorie {
     fun сalculatingCaloriesAndWater(params: UserParams) : DailyResult {
 
