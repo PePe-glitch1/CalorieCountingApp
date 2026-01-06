@@ -1,11 +1,11 @@
 package com.example.caloriecountingapp.businessLogic.calculationLogic
 
 import com.example.caloriecountingapp.businessLogic.DailyResult
-import com.example.caloriecountingapp.businessLogic.UserParams
+import com.example.caloriecountingapp.businessLogic.UserInfo
 
 
 private object CalculatorCalorie {
-    fun сalculatingCaloriesAndWater(params: UserParams) : DailyResult {
+    fun сalculatingCaloriesAndWater(params: UserInfo) : DailyResult {
 
         //BMR
         val bmr = if (params.isMale) {
@@ -58,7 +58,7 @@ private object CalculatorCalorie {
 }
 
 class RecalculateCalorie () {
-    operator fun invoke (params: UserParams): DailyResult {
+    operator fun invoke (params: UserInfo): DailyResult {
         return CalculatorCalorie.сalculatingCaloriesAndWater(params)
     }
 }
