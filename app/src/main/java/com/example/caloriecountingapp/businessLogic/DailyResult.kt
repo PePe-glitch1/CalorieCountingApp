@@ -2,7 +2,6 @@ package com.example.caloriecountingapp.businessLogic
 
 
 data class DailyResult(
-    val userId : String,
     val bmr: Double,
     val tdee: Double,
     val resultCalories: Int,
@@ -12,7 +11,6 @@ data class DailyResult(
     val water: Double,
 ) {
     init {
-        require(userId.isNotEmpty()) { "INVALID_USER_ID" }
         require(bmr > 0.0)           { "INVALID_BMR" }
         require(tdee > 0.0)          { "INVALID_TDEE" }
         require(resultCalories > 0)  { "INVALID_RESULTCALORIES" }

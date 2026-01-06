@@ -4,18 +4,16 @@ import com.example.caloriecountingapp.businessLogic.calculationLogic.LifeActivit
 import com.example.caloriecountingapp.businessLogic.calculationLogic.TargetInWeight
 
 data class UserParams(
-    val userId : String,
     val isMale: Boolean,
     val age: Int,
-    val massKg: Double,
-    val heightCm: Int,
+    val mass: Double,
+    val height: Int,
     val activityLevel: LifeActivityLevel,
     val target: TargetInWeight,
 ) {
     init {
-        require(userId.isNotEmpty()) { "INVALID_USER_ID" }
         require(age in 1..130) { "INVALID_AGE" }
-        require(massKg in 1.0..300.0) { "INVALID_MASS" }
-        require(heightCm in 50..250) { "INVALID_HEIGHT" }
+        require(mass in 1.0..300.0) { "INVALID_MASS" }
+        require(height in 50..250) { "INVALID_HEIGHT" }
     }
 }

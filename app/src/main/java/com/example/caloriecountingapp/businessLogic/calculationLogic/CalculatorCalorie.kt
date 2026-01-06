@@ -9,9 +9,9 @@ private object CalculatorCalorie {
 
         //BMR
         val bmr = if (params.isMale) {
-            10.0 * params.massKg + 6.25 * params.heightCm - 5.0 * params.age + 5.0
+            10.0 * params.mass + 6.25 * params.height - 5.0 * params.age + 5.0
         } else {
-            10.0 * params.massKg + 6.25 * params.heightCm - 5.0 * params.age - 161.0
+            10.0 * params.mass + 6.25 * params.height - 5.0 * params.age - 161.0
         }
 
         //TDEE
@@ -39,14 +39,13 @@ private object CalculatorCalorie {
 
         //Water intake
         val water = when (params.activityLevel) {
-            LifeActivityLevel.MINIMUM -> params.massKg * 30.0  // Minimum
-            LifeActivityLevel.LIGHT -> params.massKg * 30.0  // Light
-            LifeActivityLevel.MODERATE -> params.massKg * 35.0  // Moderate
-            LifeActivityLevel.ACTIVE -> params.massKg * 40.0  // Active
-            LifeActivityLevel.VERY_ACTIVE -> params.massKg * 45.0  // Very Active
+            LifeActivityLevel.MINIMUM -> params.mass * 30.0  // Minimum
+            LifeActivityLevel.LIGHT -> params.mass * 30.0  // Light
+            LifeActivityLevel.MODERATE -> params.mass * 35.0  // Moderate
+            LifeActivityLevel.ACTIVE -> params.mass * 40.0  // Active
+            LifeActivityLevel.VERY_ACTIVE -> params.mass * 45.0  // Very Active
         }
         return DailyResult(
-            userId = params.userId,
             bmr = bmr,
             tdee = tdee,
             resultCalories = resultCalories.toInt(),
