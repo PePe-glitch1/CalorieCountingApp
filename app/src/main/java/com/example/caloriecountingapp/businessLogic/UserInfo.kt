@@ -34,13 +34,13 @@ class UserInfo(
     var age: Int = age
         private set
 
-    var metriсMass: MetriсMass = metricMass
+    var metricMass: MetriсMass = metricMass
         private set
 
     var mass: Double = mass
         private set
 
-    var metriсHeight: MetriсHeight = metricHeight
+    var metricHeight: MetriсHeight = metricHeight
         private set
 
     var height: Double = height
@@ -88,7 +88,7 @@ class UserInfo(
     }
 
     fun updateMetricMass(newMetricMass: MetriсMass) {
-        metriсMass = newMetricMass
+        metricMass = newMetricMass
     }
 
     fun updateMass(newMass: Double) {
@@ -97,7 +97,7 @@ class UserInfo(
     }
 
     fun updateMetricHeight(newMetricHight: MetriсHeight) {
-        metriсHeight = newMetricHight
+        metricHeight = newMetricHight
     }
 
     fun updateHeight(newHeight: Double) {

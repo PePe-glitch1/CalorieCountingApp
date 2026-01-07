@@ -1,6 +1,6 @@
 package com.example.caloriecountingapp.businessLogic.calculationLogic
 
-sealed class MetriсMass(params: Double) {
+sealed class MetriсMass(val metric: Double) {
 
     object MassInKg : MetriсMass(1.0)
 

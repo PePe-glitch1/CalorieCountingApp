@@ -5,16 +5,26 @@ import com.example.caloriecountingapp.businessLogic.UserInfo
 
 
 private object CalculatorCalorie {
-    fun сalculatingCaloriesAndWater(params: UserInfo) : DailyResult {
+    fun calculatingCaloriesAndWater(params: UserInfo) : DailyResult {
 
-        //Metric type
+        //Metric Mass to Kg
+        val finalMass = when (params.metricMass) {
+            MetriсMass.MassInLd -> params.mass / MetriсMass.MassInLd.metric
+            MetriсMass.MassInKg -> params.mass
+        }
+
+        //Metric Height to Cm
+        val finalHeight = when (params.metricHeight) {
+            MetriсHeight.HeightInInch -> params.height * MetriсHeight.HeightInInch.metric
+            MetriсHeight.HeightInCm -> params.height
+        }
 
 
         //BMR
         val bmr = if (params.isMale) {
-            10.0 * params.mass + 6.25 * params.height - 5.0 * params.age + 5.0
+            10.0 * finalMass + 6.25 * finalHeight - 5.0 * params.age + 5.0
         } else {
-            10.0 * params.mass + 6.25 * params.height - 5.0 * params.age - 161.0
+            10.0 * finalMass + 6.25 * finalHeight - 5.0 * params.age - 161.0
         }
 
         //TDEE
@@ -49,6 +59,8 @@ private object CalculatorCalorie {
             LifeActivityLevel.VeryActive -> params.mass * 45.0  // Very Active
         }
         return DailyResult(
+            finalMass = finalMass,
+            finalHeight = finalHeight,
             bmr = bmr,
             tdee = tdee,
             resultCalories = resultCalories.toInt(),
@@ -62,6 +74,6 @@ private object CalculatorCalorie {
 
 class RecalculateCalorie () {
     fun recalculate(params: UserInfo) : DailyResult {
-        return CalculatorCalorie.сalculatingCaloriesAndWater(params)
+        return CalculatorCalorie.calculatingCaloriesAndWater(params)
     }
 }

@@ -2,6 +2,8 @@ package com.example.caloriecountingapp.businessLogic
 
 
 data class DailyResult(
+    val finalMass: Double,
+    val finalHeight: Double,
     val bmr: Double,
     val tdee: Double,
     val resultCalories: Int,
