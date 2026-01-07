@@ -1,6 +1,8 @@
 package com.example.caloriecountingapp.businessLogic
 
 import com.example.caloriecountingapp.businessLogic.calculationLogic.LifeActivityLevel
+import com.example.caloriecountingapp.businessLogic.calculationLogic.MetriсHeight
+import com.example.caloriecountingapp.businessLogic.calculationLogic.MetriсMass
 import com.example.caloriecountingapp.businessLogic.calculationLogic.TargetInWeight
 
 class UserInfo(
@@ -10,9 +12,9 @@ class UserInfo(
     isMale: Boolean,
     bornData: String,
     age: Int,
-    kgOrLd: Boolean,
+    metricMass: MetriсMass,
     mass: Double,
-    smOrin: Boolean,
+    metricHeight: MetriсHeight,
     height: Double,
     activityLevel: LifeActivityLevel,
     target: TargetInWeight,
@@ -32,13 +34,13 @@ class UserInfo(
     var age: Int = age
         private set
 
-    var kgOrLd: Boolean = kgOrLd
+    var metriсMass: MetriсMass = metricMass
         private set
 
     var mass: Double = mass
         private set
 
-    var smOrin: Boolean = smOrin
+    var metriсHeight: MetriсHeight = metricHeight
         private set
 
     var height: Double = height
@@ -85,8 +87,8 @@ class UserInfo(
         age = newAge
     }
 
-    fun updateKgOrLd(newKgOrLd: Boolean) {
-        kgOrLd = newKgOrLd
+    fun updateMetricMass(newMetricMass: MetriсMass) {
+        metriсMass = newMetricMass
     }
 
     fun updateMass(newMass: Double) {
@@ -94,8 +96,8 @@ class UserInfo(
         mass = newMass
     }
 
-    fun updateSmOrin(newSmOrin: Boolean) {
-        smOrin = newSmOrin
+    fun updateMetricHeight(newMetricHight: MetriсHeight) {
+        metriсHeight = newMetricHight
     }
 
     fun updateHeight(newHeight: Double) {
