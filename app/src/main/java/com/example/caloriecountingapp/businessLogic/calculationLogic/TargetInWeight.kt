@@ -1,7 +1,11 @@
 package com.example.caloriecountingapp.businessLogic.calculationLogic
 
-enum class TargetInWeight(val factor: Int) {
-    LOSE_WEIGHT(-500),
-    MAINTAIN_WEIGHT(0),
-    GAIN_WEIGHT(300),
+sealed class TargetInWeight(val factor: Int) {
+
+    object LoseWeight: TargetInWeight(-500)
+
+    object MaintinWeight: TargetInWeight(0)
+
+    object GainWeight: TargetInWeight(300)
+
 }

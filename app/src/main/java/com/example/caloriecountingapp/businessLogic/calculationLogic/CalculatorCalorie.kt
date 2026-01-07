@@ -7,6 +7,9 @@ import com.example.caloriecountingapp.businessLogic.UserInfo
 private object CalculatorCalorie {
     fun сalculatingCaloriesAndWater(params: UserInfo) : DailyResult {
 
+        //Metric type
+
+
         //BMR
         val bmr = if (params.isMale) {
             10.0 * params.mass + 6.25 * params.height - 5.0 * params.age + 5.0
@@ -22,28 +25,28 @@ private object CalculatorCalorie {
 
         //PFC
         val proteins = when (params.target) {
-            TargetInWeight.LOSE_WEIGHT -> resultCalories * 0.30  // Lose weight
-            TargetInWeight.MAINTAIN_WEIGHT -> resultCalories * 0.25  // Maintain weight
-            TargetInWeight.GAIN_WEIGHT -> resultCalories * 0.20  // Gain weight
+            TargetInWeight.LoseWeight -> resultCalories * 0.30  // Lose weight
+            TargetInWeight.MaintinWeight -> resultCalories * 0.25  // Maintain weight
+            TargetInWeight.GainWeight -> resultCalories * 0.20  // Gain weight
         }
         val fats = when (params.target) {
-            TargetInWeight.LOSE_WEIGHT -> resultCalories * 0.25  // Lose weight
-            TargetInWeight.MAINTAIN_WEIGHT -> resultCalories * 0.30  // Maintain weight
-            TargetInWeight.GAIN_WEIGHT -> resultCalories * 0.25  // Gain weight
+            TargetInWeight.LoseWeight -> resultCalories * 0.25  // Lose weight
+            TargetInWeight.MaintinWeight -> resultCalories * 0.30  // Maintain weight
+            TargetInWeight.GainWeight -> resultCalories * 0.25  // Gain weight
         }
         val carbohydrates = when (params.target) {
-            TargetInWeight.LOSE_WEIGHT -> resultCalories * 0.45  // Lose weight
-            TargetInWeight.MAINTAIN_WEIGHT -> resultCalories * 0.45  // Maintain weight
-            TargetInWeight.GAIN_WEIGHT -> resultCalories * 0.55  // Gain weight
+            TargetInWeight.LoseWeight -> resultCalories * 0.45  // Lose weight
+            TargetInWeight.MaintinWeight -> resultCalories * 0.45  // Maintain weight
+            TargetInWeight.GainWeight -> resultCalories * 0.55  // Gain weight
         }
 
         //Water intake
         val water = when (params.activityLevel) {
-            LifeActivityLevel.MINIMUM -> params.mass * 30.0  // Minimum
-            LifeActivityLevel.LIGHT -> params.mass * 30.0  // Light
-            LifeActivityLevel.MODERATE -> params.mass * 35.0  // Moderate
-            LifeActivityLevel.ACTIVE -> params.mass * 40.0  // Active
-            LifeActivityLevel.VERY_ACTIVE -> params.mass * 45.0  // Very Active
+            LifeActivityLevel.Minimum -> params.mass * 30.0  // Minimum
+            LifeActivityLevel.Light -> params.mass * 30.0  // Light
+            LifeActivityLevel.Moderate -> params.mass * 35.0  // Moderate
+            LifeActivityLevel.Active -> params.mass * 40.0  // Active
+            LifeActivityLevel.VeryActive -> params.mass * 45.0  // Very Active
         }
         return DailyResult(
             bmr = bmr,
@@ -58,7 +61,7 @@ private object CalculatorCalorie {
 }
 
 class RecalculateCalorie () {
-    operator fun invoke (params: UserInfo): DailyResult {
+    fun recalculate(params: UserInfo) : DailyResult {
         return CalculatorCalorie.сalculatingCaloriesAndWater(params)
     }
 }

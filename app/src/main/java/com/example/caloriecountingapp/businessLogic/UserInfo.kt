@@ -10,8 +10,10 @@ class UserInfo(
     isMale: Boolean,
     bornData: String,
     age: Int,
+    kgOrLd: Boolean,
     mass: Double,
-    height: Int,
+    smOrin: Boolean,
+    height: Double,
     activityLevel: LifeActivityLevel,
     target: TargetInWeight,
 ) {
@@ -30,10 +32,16 @@ class UserInfo(
     var age: Int = age
         private set
 
+    var kgOrLd: Boolean = kgOrLd
+        private set
+
     var mass: Double = mass
         private set
 
-    var height: Int = height
+    var smOrin: Boolean = smOrin
+        private set
+
+    var height: Double = height
         private set
 
     var activityLevel: LifeActivityLevel = activityLevel
@@ -47,9 +55,9 @@ class UserInfo(
         require(name.isNotBlank())                       { "INVALID_NAME" }
         require(mail.isNotBlank() && mail.contains("@")) { "INVALID_MAIL" }
         require(bornData.isNotEmpty())                   { "INVALID_BORN_DATA" }
-        require(age in 1..130)                      { "INVALID_AGE" }
-        require(mass in 1.0..300.0)                 { "INVALID_MASS" }
-        require(height in 50..250)                  { "INVALID_HEIGHT" }
+        require(age in 1..130)                           { "INVALID_AGE" }
+        require(mass in 1.0..300.0)                      { "INVALID_MASS" }
+        require(height in 50.0..250.0)                   { "INVALID_HEIGHT" }
     }
 
 
@@ -77,13 +85,21 @@ class UserInfo(
         age = newAge
     }
 
+    fun updateKgOrLd(newKgOrLd: Boolean) {
+        kgOrLd = newKgOrLd
+    }
+
     fun updateMass(newMass: Double) {
         require(newMass in 1.0..300.0) { "INVALID_MASS" }
         mass = newMass
     }
 
-    fun updateHeight(newHeight: Int) {
-        require(newHeight in 50..250) { "INVALID_HEIGHT" }
+    fun updateSmOrin(newSmOrin: Boolean) {
+        smOrin = newSmOrin
+    }
+
+    fun updateHeight(newHeight: Double) {
+        require(newHeight in 50.0..250.0) { "INVALID_HEIGHT" }
         height = newHeight
     }
 

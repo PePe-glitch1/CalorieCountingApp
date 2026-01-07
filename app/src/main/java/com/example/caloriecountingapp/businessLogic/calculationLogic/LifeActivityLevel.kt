@@ -1,9 +1,15 @@
 package com.example.caloriecountingapp.businessLogic.calculationLogic
 
-enum class LifeActivityLevel(val factor : Double) {
-    MINIMUM(1.2),
-    LIGHT(1.375),
-    MODERATE(1.55),
-    ACTIVE(1.725),
-    VERY_ACTIVE(1.9),
+sealed class LifeActivityLevel(val factor : Double) {
+
+    object Minimum : LifeActivityLevel(1.2)
+
+    object Light : LifeActivityLevel(1.375)
+
+    object Moderate : LifeActivityLevel(1.55)
+
+    object Active : LifeActivityLevel(1.725)
+
+    object VeryActive : LifeActivityLevel(1.9)
+
 }
