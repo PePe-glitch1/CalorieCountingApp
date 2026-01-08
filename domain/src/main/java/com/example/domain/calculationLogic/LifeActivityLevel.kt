@@ -1,4 +1,4 @@
-package com.example.caloriecountingapp.businessLogic.calculationLogic
+package com.example.domain.calculationLogic
 
 sealed class LifeActivityLevel(val factor : Double) {
 

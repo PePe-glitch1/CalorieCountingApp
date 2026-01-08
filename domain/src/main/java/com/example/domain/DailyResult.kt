@@ -1,4 +1,4 @@
-package com.example.caloriecountingapp.businessLogic
+package com.example.domain
 
 
 data class DailyResult(

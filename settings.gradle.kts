@@ -21,3 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "CalorieCountingApp"
 include(":app")
+include(":domain")

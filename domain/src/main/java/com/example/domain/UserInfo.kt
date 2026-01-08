@@ -1,9 +1,9 @@
-package com.example.caloriecountingapp.businessLogic
+package com.example.domain
 
-import com.example.caloriecountingapp.businessLogic.calculationLogic.LifeActivityLevel
-import com.example.caloriecountingapp.businessLogic.calculationLogic.MetriсHeight
-import com.example.caloriecountingapp.businessLogic.calculationLogic.MetriсMass
-import com.example.caloriecountingapp.businessLogic.calculationLogic.TargetInWeight
+import com.example.domain.calculationLogic.LifeActivityLevel
+import com.example.domain.calculationLogic.MetriсHeight
+import com.example.domain.calculationLogic.MetriсMass
+import com.example.domain.calculationLogic.TargetInWeight
 
 class UserInfo(
     val userId: String,

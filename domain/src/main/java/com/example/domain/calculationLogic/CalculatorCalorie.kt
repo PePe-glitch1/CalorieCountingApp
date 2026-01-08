@@ -1,7 +1,7 @@
-package com.example.caloriecountingapp.businessLogic.calculationLogic
+package com.example.domain.calculationLogic
 
-import com.example.caloriecountingapp.businessLogic.DailyResult
-import com.example.caloriecountingapp.businessLogic.UserInfo
+import com.example.domain.DailyResult
+import com.example.domain.UserInfo
 
 
 private object CalculatorCalorie {
