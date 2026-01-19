@@ -7,7 +7,9 @@ import com.example.domain.calculationLogic.TargetInWeight
 
 @Entity(tableName = "users_profile")
 data class Users(
-    @PrimaryKey val id: String,
+    @PrimaryKey(autoGenerate = true)
+    val id: Long,
+
     val name: String,
     val mail: String,
     val isMale: Boolean,
