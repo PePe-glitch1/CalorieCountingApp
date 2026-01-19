@@ -18,6 +18,9 @@ data class DailyCalory(
     @ColumnInfo(name = "parent_id")
     val parentId: Long,
 
+    @ColumnInfo(name = "data_add")
+    @PrimaryKey var createdAt: Long = System.currentTimeMillis(),
+
     val finalMass: Double,
     val finalHeight: Double,
     val bmr: Double,
