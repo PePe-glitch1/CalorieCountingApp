@@ -7,7 +7,7 @@ import androidx.room.*
     foreignKeys = [
         ForeignKey(
             entity = Users::class,
-            parentColumns = ["id"],
+            parentColumns = ["user_id"],
             childColumns = ["parent_id"],
             onDelete = ForeignKey.CASCADE,
             onUpdate = ForeignKey.CASCADE
@@ -15,11 +15,13 @@ import androidx.room.*
     ]
 )
 data class DailyCalory(
+
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "daily_calory_id")
+    val id: Long = 0,
+
     @ColumnInfo(name = "parent_id")
     val parentId: Long,
-
-    @ColumnInfo(name = "data_add")
-    @PrimaryKey var createdAt: Long = System.currentTimeMillis(),
 
     val finalMass: Double,
     val finalHeight: Double,
@@ -30,5 +32,5 @@ data class DailyCalory(
     val fats: Double,
     val carbohydrates: Double,
     val water: Double,
-
+    var createdAt: Long = System.currentTimeMillis(),
 )
