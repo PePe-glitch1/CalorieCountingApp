@@ -42,8 +42,6 @@ dependencies {
     implementation(libs.androidx.room.ktx)
     ksp(libs.androidx.room.compiler)
     implementation(libs.androidx.room.testing)
-    implementation(libs.androidx.jetbrains.kotlinx)
-
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     testImplementation(libs.junit)
