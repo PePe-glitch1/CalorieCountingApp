@@ -20,7 +20,10 @@ interface UsersDao {
     @Query("SELECT * FROM users_info WHERE user_id = :id")
     suspend fun getUserById(id: Long): Users?
 
+    @Query("DELETE FROM users_info WHERE user_id = :id")
+    suspend fun deleteById(id: Long)
+
     @Delete
-    suspend fun delete(id: Long)
+    suspend fun delete(user: Users)
 
 }

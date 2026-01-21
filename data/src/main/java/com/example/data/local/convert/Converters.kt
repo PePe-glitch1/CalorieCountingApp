@@ -5,9 +5,33 @@ import com.example.domain.calculationLogic.LifeActivityLevel
 import com.example.domain.calculationLogic.MetriсMass
 import com.example.domain.calculationLogic.MetriсHeight
 import com.example.domain.calculationLogic.TargetInWeight
+import java.time.LocalDate
+import java.time.LocalDateTime
 
 
 class Converters {
+
+    // LocalDate converters
+    @TypeConverter
+    fun fromLocalDate(date: LocalDate?): String? {
+        return date?.toString()
+    }
+
+    @TypeConverter
+    fun toLocalDate(value: String?): LocalDate? {
+        return value?.let { LocalDate.parse(it) }
+    }
+
+    // LocalDateTime converters
+    @TypeConverter
+    fun fromLocalDateTime(dateTime: LocalDateTime?): String? {
+        return dateTime?.toString()
+    }
+
+    @TypeConverter
+    fun toLocalDateTime(value: String?): LocalDateTime? {
+        return value?.let { LocalDateTime.parse(it) }
+    }
 
     @TypeConverter
     fun fromSealedClassLifeActivityLevelToString(value: LifeActivityLevel): String {

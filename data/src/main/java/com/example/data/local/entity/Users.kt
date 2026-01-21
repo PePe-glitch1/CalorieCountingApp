@@ -7,6 +7,9 @@ import com.example.domain.calculationLogic.LifeActivityLevel
 import com.example.domain.calculationLogic.MetriсHeight
 import com.example.domain.calculationLogic.MetriсMass
 import com.example.domain.calculationLogic.TargetInWeight
+import java.time.LocalDate
+import java.time.LocalDateTime
+
 
 @Entity(tableName = "users_info")
 data class Users(
@@ -18,7 +21,7 @@ data class Users(
     val name: String,
     val mail: String,
     val isMale: Boolean,
-    val bornData: String,
+    val bornData: LocalDate,
     val age: Int,
     val metricMass: MetriсMass,
     val mass: Double,
@@ -26,5 +29,5 @@ data class Users(
     val height: Double,
     val activityLevel: LifeActivityLevel,
     val target: TargetInWeight,
-    val createdAt: Long = System.currentTimeMillis(),
+    val createdAt: LocalDateTime = LocalDateTime.now(),
 )

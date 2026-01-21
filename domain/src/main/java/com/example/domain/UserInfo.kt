@@ -4,13 +4,14 @@ import com.example.domain.calculationLogic.LifeActivityLevel
 import com.example.domain.calculationLogic.MetriсHeight
 import com.example.domain.calculationLogic.MetriсMass
 import com.example.domain.calculationLogic.TargetInWeight
+import java.time.LocalDateTime
 
 class UserInfo(
     val userId: String,
     name: String,
     mail: String,
     isMale: Boolean,
-    bornData: String,
+    bornData: LocalDateTime,
     age: Int,
     metricMass: MetriсMass,
     mass: Double,
@@ -28,7 +29,7 @@ class UserInfo(
     var isMale: Boolean = isMale
         private set
 
-    var bornData: String = bornData
+    var bornData: LocalDateTime = bornData
         private set
 
     var age: Int = age
@@ -56,7 +57,6 @@ class UserInfo(
     init {
         require(name.isNotBlank())                       { "INVALID_NAME" }
         require(mail.isNotBlank() && mail.contains("@")) { "INVALID_MAIL" }
-        require(bornData.isNotEmpty())                   { "INVALID_BORN_DATA" }
         require(age in 1..130)                           { "INVALID_AGE" }
         require(mass in 1.0..300.0)                      { "INVALID_MASS" }
         require(height in 50.0..250.0)                   { "INVALID_HEIGHT" }
@@ -75,11 +75,6 @@ class UserInfo(
 
     fun updateIsMale(newIsMail: Boolean) {
         isMale = newIsMail
-    }
-
-    fun updateBornData(newBornData: String) {
-        require(newBornData.isNotEmpty()) { "INVALID_BORN_DATA" }
-        bornData = newBornData
     }
 
     fun updateAge(newAge: Int) {
