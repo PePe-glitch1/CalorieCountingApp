@@ -13,10 +13,11 @@ jetbrainsKotlinJvm = "2.1.0"
 appcompat = "1.6.1"
 material = "1.10.0"
 roomVersion = "2.8.4"
-jetbrainsKotlinxVersion = "1.10.2"
 compilerKspVersion = "2.1.0-1.0.29"
+kotlinxSerialization = "1.6.2"
 
 [libraries]
+kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinxSerialization" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-room = { group = "androidx.room", name = "room-runtime", version.ref = "roomVersion" }
 androidx-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "roomVersion" }
@@ -40,6 +41,7 @@ kotlinx-coroutines-android-v173 = { module = "org.jetbrains.kotlinx:kotlinx-coro
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 
 [plugins]
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 compilerKsp = { id = "com.google.devtools.ksp", version.ref = "compilerKspVersion" }
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }

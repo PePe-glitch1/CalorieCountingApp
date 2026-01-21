@@ -4,6 +4,8 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.example.domain.calculationLogic.LifeActivityLevel
+import com.example.domain.calculationLogic.MetriсHeight
+import com.example.domain.calculationLogic.MetriсMass
 import com.example.domain.calculationLogic.TargetInWeight
 
 @Entity(tableName = "users_info")
@@ -18,9 +20,9 @@ data class Users(
     val isMale: Boolean,
     val bornData: String,
     val age: Int,
-    val metricMass: String,
+    val metricMass: MetriсMass,
     val mass: Double,
-    val metricHeight: String,
+    val metricHeight: MetriсHeight,
     val height: Double,
     val activityLevel: LifeActivityLevel,
     val target: TargetInWeight,

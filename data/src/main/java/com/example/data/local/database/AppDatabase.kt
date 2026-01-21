@@ -8,6 +8,8 @@ import com.example.data.local.entity.DailyCalory
 import com.example.data.local.entity.Users
 import android.content.Context
 import androidx.room.Room
+import androidx.room.TypeConverters
+import com.example.data.local.convert.Converters
 
 @Database(
     entities = [
@@ -17,6 +19,9 @@ import androidx.room.Room
     version = 1,
     exportSchema = false
 )
+
+@TypeConverters(Converters::class)
+
 abstract class AppDatabase: RoomDatabase() {
 
     abstract fun usersDao(): UsersDao
