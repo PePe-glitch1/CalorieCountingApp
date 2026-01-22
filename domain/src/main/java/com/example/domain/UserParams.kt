@@ -7,10 +7,9 @@ import com.example.domain.calculationLogic.TargetInWeight
 import java.time.LocalDateTime
 
 class UserParams(
-    val userParamsId: Long,
-    val id: Long,
+    val userParamsId: Long = 0,
+    val id: Long = 0,
     isMale: Boolean,
-    age: Int,
     metricMass: MetriсMass,
     mass: Double,
     metricHeight: MetriсHeight,
@@ -19,9 +18,6 @@ class UserParams(
     target: TargetInWeight,
 ) {
     var isMale: Boolean = isMale
-        private set
-
-    var age: Int = age
         private set
 
     var metricMass: MetriсMass = metricMass
@@ -44,7 +40,6 @@ class UserParams(
 
 
     init {
-        require(age in 1..130)                           { "INVALID_AGE" }
         require(mass in 1.0..300.0)                      { "INVALID_MASS" }
         require(height in 50.0..250.0)                   { "INVALID_HEIGHT" }
     }
@@ -54,10 +49,6 @@ class UserParams(
         isMale = newIsMail
     }
 
-    fun updateAge(newAge: Int) {
-        require(newAge in 1..130) { "INVALID_AGE" }
-        age = newAge
-    }
 
     fun updateMetricMass(newMetricMass: MetriсMass) {
         metricMass = newMetricMass

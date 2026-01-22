@@ -19,7 +19,7 @@ data class DailyCaloryEntity(
 
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "daily_calory_id")
-    val id: Long,
+    val id: Long = 0,
 
     @ColumnInfo(name = "parent_id")
     val parentId: Long,

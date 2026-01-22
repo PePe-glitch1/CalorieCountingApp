@@ -1,11 +1,12 @@
 package com.example.domain.calculationLogic
 
 import com.example.domain.DailyCalory
+import com.example.domain.User
 import com.example.domain.UserParams
 
 
 private object CalculatorCalorie {
-    fun calculatingCaloriesAndWater(params: UserParams) : DailyCalory {
+    fun calculatingCaloriesAndWater(params: UserParams, params2: User) : DailyCalory {
 
         //Metric Mass to Kg
         val finalMass = when (params.metricMass) {
@@ -22,9 +23,9 @@ private object CalculatorCalorie {
 
         //BMR
         val bmr = if (params.isMale) {
-            10.0 * finalMass + 6.25 * finalHeight - 5.0 * params.age + 5.0
+            10.0 * finalMass + 6.25 * finalHeight - 5.0 * params2.age + 5.0
         } else {
-            10.0 * finalMass + 6.25 * finalHeight - 5.0 * params.age - 161.0
+            10.0 * finalMass + 6.25 * finalHeight - 5.0 * params2.age - 161.0
         }
 
         //TDEE
@@ -73,7 +74,7 @@ private object CalculatorCalorie {
 }
 
 class RecalculateCalorie () {
-    fun recalculate(params: UserParams) : DailyCalory {
-        return CalculatorCalorie.calculatingCaloriesAndWater(params)
+    fun recalculate(params: UserParams, params2: User) : DailyCalory {
+        return CalculatorCalorie.calculatingCaloriesAndWater(params, params2)
     }
 }

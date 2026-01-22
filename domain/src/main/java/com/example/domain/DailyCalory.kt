@@ -2,8 +2,8 @@ package com.example.domain
 
 
 data class DailyCalory(
-    val id: Long,
-    val parentId: Long,
+    val id: Long = 0,
+    val parentId: Long = 0,
     val finalMass: Double,
     val finalHeight: Double,
     val bmr: Double,

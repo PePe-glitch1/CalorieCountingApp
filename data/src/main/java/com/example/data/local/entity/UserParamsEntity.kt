@@ -24,13 +24,12 @@ data class UserParamsEntity(
 
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "user_params_id")
-    val userParamsId: Long,
+    val userParamsId: Long = 0,
 
     @ColumnInfo(name = "user_id")
     val id: Long,
 
     val isMale: Boolean,
-    val age: Int,
     val metricMass: MetriсMass,
     val mass: Double,
     val metricHeight: MetriсHeight,

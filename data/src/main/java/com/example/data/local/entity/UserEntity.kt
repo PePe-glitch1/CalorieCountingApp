@@ -1,5 +1,6 @@
 package com.example.data.local.entity
 
+import android.app.backup.BackupAgent
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -16,5 +17,4 @@ data class UserEntity(
     val username: String,
     val email: String,
     val bornData: LocalDate,
-    val dataAdd: LocalDateTime
 )
