@@ -1,9 +1,9 @@
-package com.example.domain
+package com.example.domain.models
 
 import java.time.LocalDate
 
 data class User(
-    val id: Long,
+    val id: Long = 0,
     val username: String,
     val email: String,
     val bornData: LocalDate,

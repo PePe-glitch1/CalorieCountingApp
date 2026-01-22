@@ -17,13 +17,13 @@ interface DailyCaloryDao {
     @Update
     suspend fun update(dailyCalory: DailyCaloryEntity)
 
-    @Query("DELETE FROM daily_calory WHERE daily_calory_id = :id")
-    suspend fun delete(id: Long)
-
     @Query("SELECT * FROM daily_calory WHERE parent_id = :parentId")
     suspend fun getDailyCaloryByParentId(parentId: Long): DailyCaloryEntity?
 
-    @Delete
-    suspend fun delete(dailyCalory: DailyCaloryEntity)
+    @Query("SELECT * FROM daily_calory WHERE daily_calory_id = :id")
+    suspend fun getDailyCaloryById(id: Long): DailyCaloryEntity?
+
+    @Query("DELETE FROM daily_calory WHERE daily_calory_id = :id")
+    suspend fun delete(id: Long)
 
 }

@@ -19,7 +19,7 @@ import com.example.data.local.convert.Converters
         UserParamsEntity::class,
         DailyCaloryEntity::class,
     ],
-    version = 2,
+    version = 1,
     exportSchema = false
 )
 
@@ -42,7 +42,7 @@ abstract class AppDatabase: RoomDatabase() {
                     AppDatabase::class.java,
                     "app_database"
                 )
-                .fallbackToDestructiveMigration()  // Тільки для розробки!
+                .fallbackToDestructiveMigration(true)  // Тільки для розробки!
                 .build()
 
                 INSTANCE = instance

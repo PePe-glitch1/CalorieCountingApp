@@ -1,10 +1,9 @@
-package com.example.domain
+package com.example.domain.models
 
 import com.example.domain.calculationLogic.LifeActivityLevel
 import com.example.domain.calculationLogic.MetriсHeight
 import com.example.domain.calculationLogic.MetriсMass
 import com.example.domain.calculationLogic.TargetInWeight
-import java.time.LocalDateTime
 
 class UserParams(
     val userParamsId: Long = 0,

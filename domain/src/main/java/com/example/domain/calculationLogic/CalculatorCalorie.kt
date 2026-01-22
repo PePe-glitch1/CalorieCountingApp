@@ -1,8 +1,8 @@
 package com.example.domain.calculationLogic
 
-import com.example.domain.DailyCalory
-import com.example.domain.User
-import com.example.domain.UserParams
+import com.example.domain.models.DailyCalory
+import com.example.domain.models.User
+import com.example.domain.models.UserParams
 
 
 private object CalculatorCalorie {

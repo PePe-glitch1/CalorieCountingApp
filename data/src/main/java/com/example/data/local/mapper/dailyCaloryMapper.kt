@@ -1,7 +1,7 @@
 package com.example.data.local.mapper
 
 import com.example.data.local.entity.DailyCaloryEntity
-import com.example.domain.DailyCalory
+import com.example.domain.models.DailyCalory
 import java.time.LocalDateTime
 
 fun DailyCaloryEntity.toDomain(): DailyCalory {

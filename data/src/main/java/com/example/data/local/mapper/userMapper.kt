@@ -2,7 +2,7 @@ package com.example.data.local.mapper
 
 import android.icu.util.Calendar
 import com.example.data.local.entity.UserEntity
-import com.example.domain.User
+import com.example.domain.models.User
 import java.time.LocalDate
 
 fun UserEntity.toDomain(): User {

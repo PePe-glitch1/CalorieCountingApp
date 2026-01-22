@@ -18,12 +18,12 @@ interface UserParamsDao {
     suspend fun update(user: UserParamsEntity)
 
     @Query("SELECT * FROM users_params WHERE user_id = :id")
+    suspend fun getUserParamsByUserId(id: Long): UserParamsEntity?
+
+    @Query("SELECT * FROM users_params WHERE user_params_id = :id")
     suspend fun getUserParamsById(id: Long): UserParamsEntity?
 
     @Query("DELETE FROM users_params WHERE user_id = :id")
     suspend fun deleteById(id: Long)
-
-    @Delete
-    suspend fun delete(user: UserParamsEntity)
 
 }
