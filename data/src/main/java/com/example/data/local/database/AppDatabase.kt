@@ -2,8 +2,10 @@ package com.example.data.local.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
+import com.example.data.local.dao.UserDao
 import com.example.data.local.dao.DailyCaloryDao
-import com.example.data.local.dao.UsersDao
+import com.example.data.local.dao.UserParamsDao
+import com.example.data.local.entity.User
 import com.example.data.local.entity.DailyCalory
 import com.example.data.local.entity.UserParams
 import android.content.Context
@@ -13,10 +15,11 @@ import com.example.data.local.convert.Converters
 
 @Database(
     entities = [
+        User::class,
         UserParams::class,
         DailyCalory::class,
     ],
-    version = 1,
+    version = 2,
     exportSchema = false
 )
 
@@ -24,7 +27,8 @@ import com.example.data.local.convert.Converters
 
 abstract class AppDatabase: RoomDatabase() {
 
-    abstract fun usersDao(): UsersDao
+    abstract fun userDao(): UserDao
+    abstract fun userParamsDao(): UserParamsDao
     abstract fun dailyCaloryDao(): DailyCaloryDao
 
     companion object {

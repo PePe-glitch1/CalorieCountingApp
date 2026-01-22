@@ -9,7 +9,7 @@ import androidx.room.Update
 import com.example.data.local.entity.UserParams
 
 @Dao
-interface UsersDao {
+interface UserParamsDao {
 
     @Insert(onConflict = OnConflictStrategy.ABORT)
     suspend fun insert (user: UserParams): Long
@@ -18,7 +18,7 @@ interface UsersDao {
     suspend fun update(user: UserParams)
 
     @Query("SELECT * FROM users_params WHERE user_id = :id")
-    suspend fun getUserById(id: Long): UserParams?
+    suspend fun getUserParamsById(id: Long): UserParams?
 
     @Query("DELETE FROM users_params WHERE user_id = :id")
     suspend fun deleteById(id: Long)
