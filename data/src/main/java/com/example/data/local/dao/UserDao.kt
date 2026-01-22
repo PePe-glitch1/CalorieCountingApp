@@ -7,7 +7,7 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Transaction
 import androidx.room.Update
-import com.example.data.local.entity.User
+import com.example.data.local.entity.UserEntity
 import com.example.data.local.entity.UserWithUserParams
 
 
@@ -15,13 +15,13 @@ import com.example.data.local.entity.UserWithUserParams
 interface UserDao {
 
     @Insert(onConflict = OnConflictStrategy.ABORT)
-    suspend fun insert (user: User): Long
+    suspend fun insert (user: UserEntity): Long
 
     @Update
-    suspend fun update(user: User)
+    suspend fun update(user: UserEntity)
 
     @Query("SELECT * FROM users WHERE user_id = :id")
-    suspend fun getUserById(id: Long): User?
+    suspend fun getUserById(id: Long): UserEntity?
 
     @Transaction
     @Query("SELECT * FROM users WHERE user_id = :id")
@@ -31,6 +31,6 @@ interface UserDao {
     suspend fun deleteById(id: Long)
 
     @Delete
-    suspend fun delete(user: User)
+    suspend fun delete(user: UserEntity)
 
 }

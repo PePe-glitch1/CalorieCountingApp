@@ -5,9 +5,9 @@ import androidx.room.RoomDatabase
 import com.example.data.local.dao.UserDao
 import com.example.data.local.dao.DailyCaloryDao
 import com.example.data.local.dao.UserParamsDao
-import com.example.data.local.entity.User
-import com.example.data.local.entity.DailyCalory
-import com.example.data.local.entity.UserParams
+import com.example.data.local.entity.UserEntity
+import com.example.data.local.entity.DailyCaloryEntity
+import com.example.data.local.entity.UserParamsEntity
 import android.content.Context
 import androidx.room.Room
 import androidx.room.TypeConverters
@@ -15,9 +15,9 @@ import com.example.data.local.convert.Converters
 
 @Database(
     entities = [
-        User::class,
-        UserParams::class,
-        DailyCalory::class,
+        UserEntity::class,
+        UserParamsEntity::class,
+        DailyCaloryEntity::class,
     ],
     version = 2,
     exportSchema = false

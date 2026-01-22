@@ -1,7 +1,9 @@
 package com.example.domain
 
 
-data class DailyResult(
+data class DailyCalory(
+    val id: Long,
+    val parentId: Long,
     val finalMass: Double,
     val finalHeight: Double,
     val bmr: Double,

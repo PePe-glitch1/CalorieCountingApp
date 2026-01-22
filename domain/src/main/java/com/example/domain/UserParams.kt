@@ -6,12 +6,10 @@ import com.example.domain.calculationLogic.MetriсMass
 import com.example.domain.calculationLogic.TargetInWeight
 import java.time.LocalDateTime
 
-class UserInfo(
-    val userId: String,
-    name: String,
-    mail: String,
+class UserParams(
+    val userParamsId: Long,
+    val id: Long,
     isMale: Boolean,
-    bornData: LocalDateTime,
     age: Int,
     metricMass: MetriсMass,
     mass: Double,
@@ -20,16 +18,7 @@ class UserInfo(
     activityLevel: LifeActivityLevel,
     target: TargetInWeight,
 ) {
-    var name: String = name
-        private set
-
-    var mail: String = mail
-        private set
-
     var isMale: Boolean = isMale
-        private set
-
-    var bornData: LocalDateTime = bornData
         private set
 
     var age: Int = age
@@ -55,23 +44,11 @@ class UserInfo(
 
 
     init {
-        require(name.isNotBlank())                       { "INVALID_NAME" }
-        require(mail.isNotBlank() && mail.contains("@")) { "INVALID_MAIL" }
         require(age in 1..130)                           { "INVALID_AGE" }
         require(mass in 1.0..300.0)                      { "INVALID_MASS" }
         require(height in 50.0..250.0)                   { "INVALID_HEIGHT" }
     }
 
-
-    fun updateName(newName: String) {
-        require(newName.isNotBlank()) { "INVALID_NAME" }
-        name = newName
-    }
-
-    fun updateMail(newMail: String) {
-        require(newMail.isNotBlank() && newMail.contains("@")) { "INVALID_MAIL" }
-        mail = newMail
-    }
 
     fun updateIsMale(newIsMail: Boolean) {
         isMale = newIsMail

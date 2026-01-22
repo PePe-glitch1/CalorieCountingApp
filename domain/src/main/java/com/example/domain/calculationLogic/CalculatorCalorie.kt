@@ -1,11 +1,11 @@
 package com.example.domain.calculationLogic
 
-import com.example.domain.DailyResult
-import com.example.domain.UserInfo
+import com.example.domain.DailyCalory
+import com.example.domain.UserParams
 
 
 private object CalculatorCalorie {
-    fun calculatingCaloriesAndWater(params: UserInfo) : DailyResult {
+    fun calculatingCaloriesAndWater(params: UserParams) : DailyCalory {
 
         //Metric Mass to Kg
         val finalMass = when (params.metricMass) {
@@ -58,7 +58,7 @@ private object CalculatorCalorie {
             LifeActivityLevel.Active -> params.mass * 40.0  // Active
             LifeActivityLevel.VeryActive -> params.mass * 45.0  // Very Active
         }
-        return DailyResult(
+        return DailyCalory(
             finalMass = finalMass,
             finalHeight = finalHeight,
             bmr = bmr,
@@ -73,7 +73,7 @@ private object CalculatorCalorie {
 }
 
 class RecalculateCalorie () {
-    fun recalculate(params: UserInfo) : DailyResult {
+    fun recalculate(params: UserParams) : DailyCalory {
         return CalculatorCalorie.calculatingCaloriesAndWater(params)
     }
 }

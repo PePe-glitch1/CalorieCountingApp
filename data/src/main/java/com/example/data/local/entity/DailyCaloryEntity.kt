@@ -1,12 +1,13 @@
 package com.example.data.local.entity
 
 import androidx.room.*
+import java.time.LocalDateTime
 
 @Entity(
     tableName = "daily_calory",
     foreignKeys = [
         ForeignKey(
-            entity = UserParams::class,
+            entity = UserParamsEntity::class,
             parentColumns = ["user_params_id"],
             childColumns = ["parent_id"],
             onDelete = ForeignKey.CASCADE,
@@ -14,11 +15,11 @@ import androidx.room.*
         )
     ]
 )
-data class DailyCalory(
+data class DailyCaloryEntity(
 
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "daily_calory_id")
-    val id: Long = 0,
+    val id: Long,
 
     @ColumnInfo(name = "parent_id")
     val parentId: Long,
@@ -32,5 +33,5 @@ data class DailyCalory(
     val fats: Double,
     val carbohydrates: Double,
     val water: Double,
-    var createdAt: Long = System.currentTimeMillis(),
+    var createdAt: LocalDateTime,
 )

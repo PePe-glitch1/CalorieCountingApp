@@ -7,7 +7,7 @@ import java.time.LocalDate
 import java.time.LocalDateTime
 
 @Entity( tableName = "users" )
-data class User(
+data class UserEntity(
 
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "user_id")
@@ -16,5 +16,5 @@ data class User(
     val username: String,
     val email: String,
     val bornData: LocalDate,
-    val dataAdd: LocalDateTime = LocalDateTime.now()
+    val dataAdd: LocalDateTime
 )

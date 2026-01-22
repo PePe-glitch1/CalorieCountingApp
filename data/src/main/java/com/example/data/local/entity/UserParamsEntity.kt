@@ -12,7 +12,7 @@ import com.example.domain.calculationLogic.TargetInWeight
     tableName = "users_params",
     foreignKeys = [
         ForeignKey(
-            entity = User::class,
+            entity = UserEntity::class,
             parentColumns = ["user_id"],
             childColumns = ["user_id"],
             onDelete = ForeignKey.CASCADE,
@@ -20,11 +20,11 @@ import com.example.domain.calculationLogic.TargetInWeight
         )
     ]
 )
-data class UserParams(
+data class UserParamsEntity(
 
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "user_params_id")
-    val userParamsId: Long = 0,
+    val userParamsId: Long,
 
     @ColumnInfo(name = "user_id")
     val id: Long,
