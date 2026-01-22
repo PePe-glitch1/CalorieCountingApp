@@ -5,7 +5,7 @@ import androidx.room.RoomDatabase
 import com.example.data.local.dao.DailyCaloryDao
 import com.example.data.local.dao.UsersDao
 import com.example.data.local.entity.DailyCalory
-import com.example.data.local.entity.Users
+import com.example.data.local.entity.UserParams
 import android.content.Context
 import androidx.room.Room
 import androidx.room.TypeConverters
@@ -13,7 +13,7 @@ import com.example.data.local.convert.Converters
 
 @Database(
     entities = [
-        Users::class,
+        UserParams::class,
         DailyCalory::class,
     ],
     version = 1,

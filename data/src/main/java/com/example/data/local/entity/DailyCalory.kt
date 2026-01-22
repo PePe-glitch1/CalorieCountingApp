@@ -6,7 +6,7 @@ import androidx.room.*
     tableName = "daily_calory",
     foreignKeys = [
         ForeignKey(
-            entity = Users::class,
+            entity = UserParams::class,
             parentColumns = ["user_id"],
             childColumns = ["parent_id"],
             onDelete = ForeignKey.CASCADE,
