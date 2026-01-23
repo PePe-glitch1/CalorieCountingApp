@@ -5,7 +5,7 @@ import java.time.LocalDateTime
 data class AddedProducts(
     val id: Long = 0,
     val userId: Long = 0,
-    val data: LocalDateTime = LocalDateTime.now(),
+    val date: LocalDateTime = LocalDateTime.now(),
     val name: String,
     val mass: Double,
     val calories: Double,

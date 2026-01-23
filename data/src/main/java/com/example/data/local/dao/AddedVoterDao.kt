@@ -22,5 +22,5 @@ interface AddedVoterDao {
 
     @Query("DELETE FROM added_voter WHERE added_voter_id = :id")
     suspend fun deleteById(id: Long)
-    
+
 }
