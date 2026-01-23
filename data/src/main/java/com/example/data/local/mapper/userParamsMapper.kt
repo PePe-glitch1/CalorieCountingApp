@@ -5,8 +5,8 @@ import com.example.domain.models.UserParams
 
 fun UserParamsEntity.toDomain(): UserParams {
     return UserParams(
-        userParamsId = this.userParamsId,
         id = this.id,
+        userId = this.userId,
         isMale = this.isMale,
         metricMass = this.metricMass,
         mass = this.mass,
@@ -19,8 +19,8 @@ fun UserParamsEntity.toDomain(): UserParams {
 
 fun UserParams.toEntity(): UserParamsEntity {
     return UserParamsEntity(
-        userParamsId = this.userParamsId,
         id = this.id,
+        userId = this.userId,
         isMale = this.isMale,
         metricMass = this.metricMass,
         mass = this.mass,
