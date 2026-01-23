@@ -8,6 +8,6 @@ import com.example.data.local.entity.AllProductsEntity
 interface AllProductsDao {
 
     @Query("SELECT * FROM all_products WHERE product_name = :productName")
-    suspend fun getUserParamsByUserId(productName: String): AllProductsEntity?
+    suspend fun getAllProductsByName(productName: String): AllProductsEntity?
 
 }

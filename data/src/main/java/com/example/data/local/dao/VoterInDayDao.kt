@@ -5,6 +5,7 @@ import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
 import com.example.data.local.entity.VoterInDayEntity
+import java.time.LocalDate
 
 @Dao
 interface VoterInDayDao {
@@ -13,7 +14,7 @@ interface VoterInDayDao {
     suspend fun insert(voterInDay: VoterInDayEntity): Long
 
     @Query("SELECT * FROM voter_in_day WHERE user_id = :userId AND date = :date")
-    suspend fun getVoterInDayByUserIdAndDate(userId: Long, date: String): VoterInDayEntity?
+    suspend fun getVoterInDayByUserIdAndDate(userId: Long, date: LocalDate): VoterInDayEntity?
 
     @Update
     suspend fun update(voterInDay: VoterInDayEntity)
