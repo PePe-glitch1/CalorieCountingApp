@@ -25,7 +25,7 @@ data class AddedVoterEntity(
 
     @ColumnInfo(name = "user_id")
     val userId: Long = 0,
-    
+
     val date: LocalDateTime,
     val addVoterMl: Int,
 )

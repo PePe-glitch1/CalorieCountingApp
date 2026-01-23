@@ -1,9 +1,7 @@
 package com.example.data.local.dao
 
 import androidx.room.Dao
-import androidx.room.Delete
 import androidx.room.Insert
-import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
 import com.example.data.local.entity.UserParamsEntity
@@ -11,7 +9,7 @@ import com.example.data.local.entity.UserParamsEntity
 @Dao
 interface UserParamsDao {
 
-    @Insert(onConflict = OnConflictStrategy.ABORT)
+    @Insert
     suspend fun insert (user: UserParamsEntity): Long
 
     @Update

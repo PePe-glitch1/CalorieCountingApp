@@ -8,10 +8,12 @@ import androidx.room.PrimaryKey
 data class AllProductsEntity(
 
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "all_products_id")
+    @ColumnInfo(name = "products_id")
     val id: Long = 0,
 
+    @ColumnInfo(name = "product_name")
     val name: String,
+
     val caloriesIn1g: Double,
     val proteinsIn1g: Double,
     val fatsIn1g: Double,

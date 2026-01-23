@@ -27,7 +27,7 @@ data class AddedProductsEntity(
     @ColumnInfo(name = "user_id")
     val userId: Long = 0,
 
-    val data: LocalDateTime,
+    val date: LocalDateTime,
     val name: String,
     val mass: Double,
     val calories: Double,
