@@ -15,4 +15,5 @@ data class UserEntity(
     val username: String,
     val email: String,
     val bornData: LocalDate,
+    val notificationsEnabled: Boolean,
 )

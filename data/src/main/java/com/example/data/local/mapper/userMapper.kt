@@ -14,7 +14,8 @@ fun UserEntity.toDomain(): User {
         username = this.username,
         email = this.email,
         bornData = this.bornData,
-        age = age
+        age = age,
+        notificationsEnabled = this.notificationsEnabled,
     )
 }
 
@@ -24,6 +25,7 @@ fun User.toEntity(): UserEntity {
         username = this.username,
         email = this.email,
         bornData = this.bornData,
+        notificationsEnabled = this.notificationsEnabled,
     )
 }
 
