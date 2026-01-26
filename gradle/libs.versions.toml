@@ -15,7 +15,7 @@ material = "1.10.0"
 roomVersion = "2.8.4"
 compilerKspVersion = "2.1.0-1.0.29"
 kotlinxSerialization = "1.6.2"
-datastoreVersion = "1.10.2"
+datastoreVersion = "1.1.1"
 coroutinesCoreVersion = "1.10.2"
 
 [libraries]
