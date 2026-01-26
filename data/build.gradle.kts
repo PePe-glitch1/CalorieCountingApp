@@ -36,6 +36,8 @@ android {
 
 dependencies {
     implementation(project(":domain"))
+    implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.androidx.datastore.preferences)
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.room)

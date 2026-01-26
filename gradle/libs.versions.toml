@@ -15,8 +15,13 @@ material = "1.10.0"
 roomVersion = "2.8.4"
 compilerKspVersion = "2.1.0-1.0.29"
 kotlinxSerialization = "1.6.2"
+datastoreVersion = "1.10.2"
+coroutinesCoreVersion = "1.10.2"
 
 [libraries]
+androidx-datastore-preferences = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "datastoreVersion" }
+kotlinx-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutinesCoreVersion" }
+
 kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinxSerialization" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-room = { group = "androidx.room", name = "room-runtime", version.ref = "roomVersion" }
