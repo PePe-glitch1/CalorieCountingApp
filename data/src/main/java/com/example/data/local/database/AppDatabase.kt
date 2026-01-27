@@ -63,6 +63,7 @@ abstract class AppDatabase: RoomDatabase() {
                     "app_database"
                 )
                 .fallbackToDestructiveMigration(true)  // Тільки для розробки!
+                .createFromAsset("app_database.db") // Ініціалізація з попередньо заповненої БД
                 .build()
 
                 INSTANCE = instance

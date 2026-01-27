@@ -13,6 +13,6 @@ interface AllProductsDao {
         WHERE product_name LIKE '%' || :searchQuery || '%'
         ORDER BY product_name ASC
     """)
-    suspend fun searchProducts(searchQuery: String): Flow<List<AllProductsEntity>>
+    fun searchProducts(searchQuery: String): Flow<List<AllProductsEntity>>
 
 }
