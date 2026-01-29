@@ -13,8 +13,8 @@ interface CaloriesInDayDao {
     @Insert
     suspend fun insert(caloriesInDay: CaloriesInDayEntity): Long
 
-    @Query("SELECT * FROM calories_in_day WHERE user_id = :userId AND date = :date")
-    suspend fun getCaloriesInDayByUserIdAndDate(userId: Long, date: LocalDate): CaloriesInDayEntity?
+    @Query("SELECT * FROM calories_in_day WHERE user_id = :userId ")
+    suspend fun getCaloriesInDayByUserIdAndDate(userId: Long ): CaloriesInDayEntity?
 
     @Update
     suspend fun update(caloriesInDay: CaloriesInDayEntity)

@@ -7,7 +7,7 @@ interface CaloriesInDayRepository {
 
     suspend fun saveCaloriesInDay(params: CaloriesInDay): Long
 
-    suspend fun getCaloriesInDayByUserIdAndDate(userId: Long, data: LocalDate): CaloriesInDay?
+    suspend fun getCaloriesInDayByUserIdAndDate(userId: Long): CaloriesInDay?
 
     suspend fun updateCaloriesInDay(params: CaloriesInDay)
 

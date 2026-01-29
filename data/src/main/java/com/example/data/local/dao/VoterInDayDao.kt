@@ -13,8 +13,8 @@ interface VoterInDayDao {
     @Insert
     suspend fun insert(voterInDay: VoterInDayEntity): Long
 
-    @Query("SELECT * FROM voter_in_day WHERE user_id = :userId AND date = :date")
-    suspend fun getVoterInDayByUserIdAndDate(userId: Long, date: LocalDate): VoterInDayEntity?
+    @Query("SELECT * FROM voter_in_day WHERE user_id = :userId")
+    suspend fun getVoterInDayByUserIdAndDate(userId: Long): VoterInDayEntity?
 
     @Update
     suspend fun update(voterInDay: VoterInDayEntity)

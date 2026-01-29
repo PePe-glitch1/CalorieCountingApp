@@ -1,7 +1,6 @@
 package com.example.domain.models
 
 import java.time.LocalDate
-import java.time.LocalDateTime
 
 data class CaloriesInDay(
     val id: Long = 0,

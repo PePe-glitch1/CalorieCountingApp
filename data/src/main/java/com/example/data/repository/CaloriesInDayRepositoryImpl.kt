@@ -21,11 +21,8 @@ class CaloriesInDayRepositoryImpl(
         }
     }
 
-    override suspend fun getCaloriesInDayByUserIdAndDate(
-        userId: Long,
-        data: LocalDate
-    ): CaloriesInDay? {
-        val entity = caloriesInDayDao.getCaloriesInDayByUserIdAndDate(userId, data)
+    override suspend fun getCaloriesInDayByUserIdAndDate( userId: Long, ): CaloriesInDay? {
+        val entity = caloriesInDayDao.getCaloriesInDayByUserIdAndDate(userId)
         return entity?.toDomain()
     }
 

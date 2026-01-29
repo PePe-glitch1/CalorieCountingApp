@@ -8,5 +8,5 @@ data class User(
     val email: String,
     val bornData: LocalDate,
     val age: Int,
-    val notificationsEnabled: Boolean,
+    val notificationsEnabled: Boolean = true,
 )

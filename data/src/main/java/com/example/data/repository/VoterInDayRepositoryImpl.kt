@@ -23,11 +23,8 @@ class VoterInDayRepositoryImpl(
         }
     }
 
-    override suspend fun getVoterInDayByUserIdAndDate(
-        userId: Long,
-        date: LocalDate
-    ): VoterInDay? {
-        val entity = voterInDayDao.getVoterInDayByUserIdAndDate(userId, date)
+    override suspend fun getVoterInDayByUserIdAndDate( userId: Long, ): VoterInDay? {
+        val entity = voterInDayDao.getVoterInDayByUserIdAndDate(userId)
         return entity?.toDomain()
     }
 
