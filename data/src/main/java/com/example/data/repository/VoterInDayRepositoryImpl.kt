@@ -5,7 +5,6 @@ import com.example.data.local.mapper.toDomain
 import com.example.data.local.mapper.toEntity
 import com.example.domain.models.VoterInDay
 import com.example.domain.repository.VoterInDayRepository
-import java.time.LocalDate
 
 class VoterInDayRepositoryImpl(
     private val voterInDayDao: VoterInDayDao

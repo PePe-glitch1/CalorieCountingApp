@@ -3,7 +3,6 @@ package com.example.caloriecountingapp.viewModels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import com.example.domain.models.CaloriesInDay
 import com.example.domain.models.VoterInDay
 import com.example.domain.repository.VoterInDayRepository
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -58,8 +57,8 @@ class VoterInDayViewModel (
             date = LocalDate.now(),
             votersMl = 0
         )
-        voterInDayRepository.addVoterInDay(newVoterInDay)
-        _voterInDay.value = newVoterInDay
+        val id = voterInDayRepository.addVoterInDay(newVoterInDay)
+        _voterInDay.value = newVoterInDay.copy(id = id)
     }
 
     fun addVotersMl(votersToAdd: Int) {
@@ -83,6 +82,24 @@ class VoterInDayViewModel (
         }
     }
 
+    fun resetVotersMl() {
+        viewModelScope.launch {
+            try {
+                _errorMessage.value = null
+                _isLoading.value = true
+                val current = _voterInDay.value ?: return@launch
+
+                val resetVoterInDay = current.copy(votersMl = 0)
+                voterInDayRepository.updateVoterInDay(resetVoterInDay)
+                _voterInDay.value = resetVoterInDay
+            } catch (e: Exception) {
+                _errorMessage.value = "Error ${e.message}"
+            } finally {
+                _isLoading.value = false
+            }
+        }
+    }
+
     fun deleteVoterInDay(id: Long) {
         viewModelScope.launch {
             try {
@@ -96,6 +113,10 @@ class VoterInDayViewModel (
                 _isLoading.value = false
             }
         }
+    }
+
+    fun refresh() {
+        loadVoterInDay()
     }
 
     fun clearError() {

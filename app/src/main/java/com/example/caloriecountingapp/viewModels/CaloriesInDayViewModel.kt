@@ -59,8 +59,8 @@ class CaloriesInDayViewModel(
             addTotalFats = 0.0,
             addTotalCarbohydrates = 0.0
         )
-        caloriesInDayRepository.saveCaloriesInDay(newCaloriesInDay)
-        _caloriesInDay.value = newCaloriesInDay
+        val id = caloriesInDayRepository.saveCaloriesInDay(newCaloriesInDay)
+        _caloriesInDay.value = newCaloriesInDay.copy(id = id)
     }
 
     fun addCalories(
@@ -127,6 +127,10 @@ class CaloriesInDayViewModel(
                 _isLoading.value = false
             }
         }
+    }
+
+    fun refresh() {
+        loadCaloriesInDay()
     }
 
     fun clearError() {

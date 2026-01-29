@@ -1,7 +1,6 @@
 package com.example.domain.repository
 
 import com.example.domain.models.CaloriesInDay
-import java.time.LocalDate
 
 interface CaloriesInDayRepository {
 

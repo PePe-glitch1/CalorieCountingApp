@@ -1,7 +1,6 @@
 package com.example.domain.repository
 
 import com.example.domain.models.VoterInDay
-import java.time.LocalDate
 
 interface VoterInDayRepository {
 

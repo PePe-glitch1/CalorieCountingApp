@@ -5,7 +5,6 @@ import com.example.data.local.mapper.toEntity
 import com.example.data.local.mapper.toDomain
 import com.example.domain.models.CaloriesInDay
 import com.example.domain.repository.CaloriesInDayRepository
-import java.time.LocalDate
 
 class CaloriesInDayRepositoryImpl(
     private val caloriesInDayDao: CaloriesInDayDao
