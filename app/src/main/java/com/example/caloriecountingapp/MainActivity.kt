@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import com.example.caloriecountingapp.screenElements.TestComposable
 import com.example.caloriecountingapp.screenElements.TopBar
 
 
@@ -23,6 +24,7 @@ class MainActivity : ComponentActivity() {
                     .fillMaxSize(),
             ) {
                 TopBar(name = "Slava")
+                TestComposable()
             }
 
         }
