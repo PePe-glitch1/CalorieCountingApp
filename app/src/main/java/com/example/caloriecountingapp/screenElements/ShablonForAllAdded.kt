@@ -75,7 +75,6 @@ fun ShablonForAllAdded() {
                             text = "Калорії = 250",
                             fontSize = 12.sp,
                             fontFamily = Kurale_reg,
-                            //color = Color.Gray,
                             modifier = Modifier
                                 .padding(end = 16.dp)
                         )
