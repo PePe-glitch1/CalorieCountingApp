@@ -1,19 +1,26 @@
 package com.example.caloriecountingapp.viewModels
 
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.example.domain.models.User
 import com.example.domain.repository.UserRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import java.time.LocalDate
+import java.time.Period
+import javax.inject.Inject
 
-class UserViewModel(
-    private val userRepository: UserRepository
+@HiltViewModel
+class UserViewModel @Inject constructor(
+    private val userRepository: UserRepository,
+    savedStateHandle: SavedStateHandle
 ): ViewModel() {
+
+    private val userId: Long = savedStateHandle["userId"] ?: 1L
 
     private val _user = MutableStateFlow<User?>(null)
     val user: StateFlow<User?> = _user.asStateFlow()
@@ -28,19 +35,17 @@ class UserViewModel(
         loadUser()
     }
 
-    private fun loadUser(userId: Long = 1L) {
+    private fun loadUser() {
         viewModelScope.launch {
             try {
                 _errorMessage.value = null
                 _isLoading.value = true
-                val users = userRepository.getUserById(userId)
-                _user.value = users
+                _user.value = userRepository.getUserById(userId)
             } catch (e: Exception) {
                 _errorMessage.value = "Error ${e.message}"
             } finally {
                 _isLoading.value = false
             }
-
         }
     }
 
@@ -57,15 +62,15 @@ class UserViewModel(
                     username = username,
                     email = email,
                     bornData = bornData,
-                    age = 0,
+                    age = Period.between(bornData, LocalDate.now()).years,
                 )
                 userRepository.saveUser(user)
                 loadUser()
             } catch (e: Exception) {
                 _errorMessage.value = "Error ${e.message}"
             } finally {
-            _isLoading.value = false
-        }
+                _isLoading.value = false
+            }
         }
     }
 
@@ -73,7 +78,6 @@ class UserViewModel(
         username: String? = null,
         email: String? = null,
         bornData: LocalDate? = null,
-        age: Int? = null,
         notificationsEnabled: Boolean? = null
     ) {
         viewModelScope.launch {
@@ -81,11 +85,12 @@ class UserViewModel(
                 _errorMessage.value = null
                 _isLoading.value = true
                 val currentUser = _user.value ?: return@launch
+                val newBornData = bornData ?: currentUser.bornData
                 val updatedUser = currentUser.copy(
                     username = username ?: currentUser.username,
                     email = email ?: currentUser.email,
-                    bornData = bornData ?: currentUser.bornData,
-                    age = age ?: currentUser.age,
+                    bornData = newBornData,
+                    age = Period.between(newBornData, LocalDate.now()).years,
                     notificationsEnabled = notificationsEnabled ?: currentUser.notificationsEnabled
                 )
                 userRepository.updateUser(updatedUser)
@@ -98,35 +103,22 @@ class UserViewModel(
         }
     }
 
-    fun deleteUser(userId: Long = 1L) {
+    fun deleteUser() {
         viewModelScope.launch {
             try {
                 _errorMessage.value = null
+                _isLoading.value = true
                 userRepository.deleteUserById(userId)
                 _user.value = null
             } catch (e: Exception) {
                 _errorMessage.value = "Error ${e.message}"
+            } finally {
+                _isLoading.value = false
             }
         }
     }
 
     fun clearError() {
         _errorMessage.value = null
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-    }
-}
-
-class UserViewModelFactory(
-    private val userRepository: UserRepository
-) : ViewModelProvider.Factory {
-    @Suppress("UNCHECKED_CAST")
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(UserViewModel::class.java)) {
-            return UserViewModel(userRepository) as T
-        }
-        throw IllegalArgumentException("Unknown ViewModel class")
     }
 }

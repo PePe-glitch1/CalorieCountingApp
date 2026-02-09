@@ -7,5 +7,6 @@ plugins {
     alias(libs.plugins.android.library) apply false
     alias(libs.plugins.compilerKsp) apply false
     alias(libs.plugins.kotlin.serialization) apply false
+    alias(libs.plugins.dagger.hilt.android) apply false
 
 }

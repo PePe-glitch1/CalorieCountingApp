@@ -7,6 +7,6 @@ data class User(
     val username: String,
     val email: String,
     val bornData: LocalDate,
-    val age: Int,
+    val age: Int = 0,
     val notificationsEnabled: Boolean = true,
 )

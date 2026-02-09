@@ -40,8 +40,7 @@ fun ShablonForAllAdded() {
                         .background(Color.White),
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
-                    Column(
-                    ) {
+                    Column {
                         Text(
                             text = "Borsh",
                             fontSize = 16.sp,
