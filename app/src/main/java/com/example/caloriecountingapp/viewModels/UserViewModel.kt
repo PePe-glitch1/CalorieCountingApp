@@ -20,7 +20,7 @@ class UserViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle
 ): ViewModel() {
 
-    private val userId: Long = savedStateHandle["userId"] ?: 1L
+    private val userId: Long = savedStateHandle["user_id"] ?: 1L
 
     private val _user = MutableStateFlow<User?>(null)
     val user: StateFlow<User?> = _user.asStateFlow()

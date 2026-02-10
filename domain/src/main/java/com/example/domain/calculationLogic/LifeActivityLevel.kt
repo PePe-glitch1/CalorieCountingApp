@@ -6,7 +6,7 @@ sealed class LifeActivityLevel(val factor : Double) {
 
     object Light : LifeActivityLevel(1.375)
 
-    object Moderate : LifeActivityLevel(1.55)
+    object Middle : LifeActivityLevel(1.55)
 
     object Active : LifeActivityLevel(1.725)
 

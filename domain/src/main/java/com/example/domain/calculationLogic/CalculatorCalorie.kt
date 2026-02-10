@@ -55,7 +55,7 @@ private object CalculatorCalorie {
         val water = when (params.activityLevel) {
             LifeActivityLevel.Minimum -> params.mass * 30.0  // Minimum
             LifeActivityLevel.Light -> params.mass * 30.0  // Light
-            LifeActivityLevel.Moderate -> params.mass * 35.0  // Moderate
+            LifeActivityLevel.Middle -> params.mass * 35.0  // Moderate
             LifeActivityLevel.Active -> params.mass * 40.0  // Active
             LifeActivityLevel.VeryActive -> params.mass * 45.0  // Very Active
         }

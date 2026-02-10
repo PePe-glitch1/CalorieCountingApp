@@ -15,13 +15,9 @@ import com.example.data.local.convert.Converters
 import com.example.data.local.dao.AddedProductsDao
 import com.example.data.local.dao.AddedVoterDao
 import com.example.data.local.dao.AllProductsDao
-import com.example.data.local.dao.CaloriesInDayDao
-import com.example.data.local.dao.VoterInDayDao
 import com.example.data.local.entity.AddedProductsEntity
 import com.example.data.local.entity.AddedVoterEntity
 import com.example.data.local.entity.AllProductsEntity
-import com.example.data.local.entity.CaloriesInDayEntity
-import com.example.data.local.entity.VoterInDayEntity
 
 @Database(
     entities = [
@@ -30,8 +26,6 @@ import com.example.data.local.entity.VoterInDayEntity
         DailyCaloryEntity::class,
         AllProductsEntity::class,
         AddedProductsEntity::class,
-        CaloriesInDayEntity::class,
-        VoterInDayEntity::class,
         AddedVoterEntity::class,
     ],
     version = 1,
@@ -47,8 +41,6 @@ abstract class AppDatabase: RoomDatabase() {
     abstract fun dailyCaloryDao(): DailyCaloryDao
     abstract fun allProductsDao(): AllProductsDao
     abstract fun addedProductsDao(): AddedProductsDao
-    abstract fun caloriesInDayDao(): CaloriesInDayDao
-    abstract fun voterInDayDao(): VoterInDayDao
     abstract fun addedVoterDao(): AddedVoterDao
 
     companion object {

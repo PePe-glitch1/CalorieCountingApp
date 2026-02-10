@@ -1,20 +1,25 @@
 package com.example.caloriecountingapp.viewModels
 
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.example.domain.models.AddedProducts
 import com.example.domain.repository.AddedProductsRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import java.time.LocalDateTime
+import javax.inject.Inject
 
-class AddedProductsViewModel (
+@HiltViewModel
+class AddedProductsViewModel @Inject constructor(
     private val addedProductsRepository: AddedProductsRepository,
-    private val userId: Long
+    savedStateHandle: SavedStateHandle
 ): ViewModel() {
+
+    private val userId: Long = savedStateHandle["user_id"] ?: 1L
 
     private val _addedProducts = MutableStateFlow<List<AddedProducts>>(emptyList())
     val addedProducts: StateFlow<List<AddedProducts>> = _addedProducts.asStateFlow()
@@ -44,39 +49,7 @@ class AddedProductsViewModel (
         }
     }
 
-    fun getAllAddedProductByUserIdAndDate(date: LocalDateTime): List<AddedProducts> {
-        var products: List<AddedProducts> = emptyList()
-        viewModelScope.launch {
-            try {
-                _errorMessage.value = null
-                _isLoading.value = true
-                products = addedProductsRepository.getAllAddedProductByUserIdAndDate(userId, date) ?: emptyList()
-            } catch (e: Exception) {
-                _errorMessage.value = "Error ${e.message}"
-            } finally {
-                _isLoading.value = false
-            }
-        }
-        return products
-    }
-
-    fun getAddedProductById(id: Long): AddedProducts? {
-        var product: AddedProducts? = null
-        viewModelScope.launch {
-            try {
-                _errorMessage.value = null
-                _isLoading.value = true
-                product = addedProductsRepository.getAddedProductById(id)
-            } catch (e: Exception) {
-                _errorMessage.value = "Error ${e.message}"
-            } finally {
-                _isLoading.value = false
-            }
-        }
-        return product
-    }
-
-    fun saveAddedProduct(
+    fun addProduct(
         name: String,
         mass: Double,
         calories: Double,
@@ -87,7 +60,10 @@ class AddedProductsViewModel (
         viewModelScope.launch {
             try {
                 _errorMessage.value = null
-                val params = AddedProducts(
+                _isLoading.value = true
+                val product = AddedProducts(
+                    userId = userId,
+                    date = LocalDateTime.now(),
                     name = name,
                     mass = mass,
                     calories = calories,
@@ -95,44 +71,47 @@ class AddedProductsViewModel (
                     fats = fats,
                     carbohydrates = carbohydrates
                 )
-                addedProductsRepository.saveAddedProduct(params)
+                addedProductsRepository.saveAddedProduct(product)
                 loadAddedProducts()
             } catch (e: Exception) {
                 _errorMessage.value = "Error ${e.message}"
+            } finally {
+                _isLoading.value = false
             }
         }
     }
 
-    fun deleteAddedProductById(id: Long) {
+    fun deleteProduct(id: Long) {
         viewModelScope.launch {
             try {
                 _errorMessage.value = null
+                _isLoading.value = true
                 addedProductsRepository.deleteAddedProductById(id)
                 loadAddedProducts()
             } catch (e: Exception) {
                 _errorMessage.value = "Error ${e.message}"
+            } finally {
+                _isLoading.value = false
+            }
+        }
+    }
+
+    fun loadProductsByDate(date: LocalDateTime) {
+        viewModelScope.launch {
+            try {
+                _errorMessage.value = null
+                _isLoading.value = true
+                val products = addedProductsRepository.getAllAddedProductByUserIdAndDate(userId, date)
+                _addedProducts.value = products ?: emptyList()
+            } catch (e: Exception) {
+                _errorMessage.value = "Error ${e.message}"
+            } finally {
+                _isLoading.value = false
             }
         }
     }
 
     fun clearError() {
         _errorMessage.value = null
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-    }
-}
-
-class AddedProductsViewModelFactory(
-    private val addedProductsRepository: AddedProductsRepository,
-    private val userId: Long
-) : ViewModelProvider.Factory {
-    @Suppress("UNCHECKED_CAST")
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(AddedProductsViewModel::class.java)) {
-            return AddedProductsViewModel(addedProductsRepository, userId) as T
-        }
-        throw IllegalArgumentException("Unknown ViewModel class")
     }
 }

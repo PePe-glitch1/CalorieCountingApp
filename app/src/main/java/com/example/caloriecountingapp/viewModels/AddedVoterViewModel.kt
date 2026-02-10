@@ -1,23 +1,28 @@
 package com.example.caloriecountingapp.viewModels
 
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.example.domain.models.AddedVoter
 import com.example.domain.repository.AddedVoterRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import java.time.LocalDateTime
+import javax.inject.Inject
 
-class AddedVoterViewModel (
+@HiltViewModel
+class AddedVoterViewModel @Inject constructor(
     private val addedVoterRepository: AddedVoterRepository,
-    private val userId: Long
+    savedStateHandle: SavedStateHandle
 ): ViewModel() {
 
-    private val _addedVoter = MutableStateFlow<List<AddedVoter>>(emptyList())
-    val addedVoter: StateFlow<List<AddedVoter>> = _addedVoter.asStateFlow()
+    private val userId: Long = savedStateHandle["user_id"] ?: 1L
+
+    private val _addedVoters = MutableStateFlow<List<AddedVoter>>(emptyList())
+    val addedVoters: StateFlow<List<AddedVoter>> = _addedVoters.asStateFlow()
 
     private val _isLoading = MutableStateFlow(false)
     val isLoading: StateFlow<Boolean> = _isLoading.asStateFlow()
@@ -26,16 +31,16 @@ class AddedVoterViewModel (
     val errorMessage: StateFlow<String?> = _errorMessage.asStateFlow()
 
     init {
-        loadAddedVoter()
+        loadAddedVoters()
     }
 
-    private fun loadAddedVoter() {
+    private fun loadAddedVoters() {
         viewModelScope.launch {
             try {
                 _errorMessage.value = null
                 _isLoading.value = true
                 val voters = addedVoterRepository.getAllAddedVoterEntityByUserId(userId)
-                _addedVoter.value = voters ?: emptyList()
+                _addedVoters.value = voters ?: emptyList()
             } catch (e: Exception) {
                 _errorMessage.value = "Error ${e.message}"
             } finally {
@@ -44,52 +49,18 @@ class AddedVoterViewModel (
         }
     }
 
-    fun getAllAddedVoterByUserIdAndDate(date: LocalDateTime): List<AddedVoter> {
-        var voters: List<AddedVoter> = emptyList()
-        viewModelScope.launch {
-            try {
-                _errorMessage.value = null
-                _isLoading.value = true
-                voters = addedVoterRepository.getAllAddedVoterByUserIdAndDate(userId, date) ?: emptyList()
-            } catch (e: Exception) {
-                _errorMessage.value = "Error ${e.message}"
-            } finally {
-                _isLoading.value = false
-            }
-        }
-        return voters
-    }
-
-    fun getAddedVoterEntityById(id: Long): AddedVoter? {
-        var voter: AddedVoter? = null
-        viewModelScope.launch {
-            try {
-                _errorMessage.value = null
-                _isLoading.value = true
-                voter = addedVoterRepository.getAddedVoterEntityById(id)
-            } catch (e: Exception) {
-                _errorMessage.value = "Error ${e.message}"
-            } finally {
-                _isLoading.value = false
-            }
-        }
-        return voter
-    }
-
-    fun saveAddedVoter(
-        date: LocalDateTime,
-        addVoterMl: Int
-    ) {
+    fun addVoter(addVoterMl: Int) {
         viewModelScope.launch {
             try {
                 _errorMessage.value = null
                 _isLoading.value = true
                 val voter = AddedVoter(
-                    date = date,
+                    userId = userId,
+                    date = LocalDateTime.now(),
                     addVoterMl = addVoterMl
                 )
                 addedVoterRepository.saveAddedVoter(voter)
-                loadAddedVoter()
+                loadAddedVoters()
             } catch (e: Exception) {
                 _errorMessage.value = "Error ${e.message}"
             } finally {
@@ -98,13 +69,28 @@ class AddedVoterViewModel (
         }
     }
 
-    fun deleteAddedVoter(id: Long) {
+    fun deleteVoter(id: Long) {
         viewModelScope.launch {
             try {
                 _errorMessage.value = null
                 _isLoading.value = true
                 addedVoterRepository.deleteAddedVoterById(id)
-                loadAddedVoter()
+                loadAddedVoters()
+            } catch (e: Exception) {
+                _errorMessage.value = "Error ${e.message}"
+            } finally {
+                _isLoading.value = false
+            }
+        }
+    }
+
+    fun loadVotersByDate(date: LocalDateTime) {
+        viewModelScope.launch {
+            try {
+                _errorMessage.value = null
+                _isLoading.value = true
+                val voters = addedVoterRepository.getAllAddedVoterByUserIdAndDate(userId, date)
+                _addedVoters.value = voters ?: emptyList()
             } catch (e: Exception) {
                 _errorMessage.value = "Error ${e.message}"
             } finally {
@@ -115,22 +101,5 @@ class AddedVoterViewModel (
 
     fun clearError() {
         _errorMessage.value = null
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-    }
-}
-
-class AddedVoterViewModelFactory(
-    private val addedVoterRepository: AddedVoterRepository,
-    private val userId: Long
-) : ViewModelProvider.Factory {
-    @Suppress("UNCHECKED_CAST")
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(AddedVoterViewModel::class.java)) {
-            return AddedVoterViewModel(addedVoterRepository, userId) as T
-        }
-        throw IllegalArgumentException("Unknown ViewModel class")
     }
 }

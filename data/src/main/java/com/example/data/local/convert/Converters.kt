@@ -38,7 +38,7 @@ class Converters {
         return when (value) {
             is LifeActivityLevel.Minimum   -> "Minimum"
             is LifeActivityLevel.Light     -> "Light"
-            is LifeActivityLevel.Moderate  -> "Moderate"
+            is LifeActivityLevel.Middle  -> "Moderate"
             is LifeActivityLevel.Active    -> "Active"
             is LifeActivityLevel.VeryActive-> "VeryActive"
         }
@@ -49,7 +49,7 @@ class Converters {
         return when (value) {
             "Minimum" -> LifeActivityLevel.Minimum
             "Light" -> LifeActivityLevel.Light
-            "Moderate" -> LifeActivityLevel.Moderate
+            "Moderate" -> LifeActivityLevel.Middle
             "Active" -> LifeActivityLevel.Active
             "VeryActive" -> LifeActivityLevel.VeryActive
             else -> throw IllegalArgumentException("Unknown LifeActivityLevel: $value")
