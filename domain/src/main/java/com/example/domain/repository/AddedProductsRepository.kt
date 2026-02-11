@@ -15,4 +15,6 @@ interface AddedProductsRepository {
 
     suspend fun deleteAddedProductById(id: Long)
 
+    suspend fun getProductsInDateRange(userId: Long, from: LocalDateTime, to: LocalDateTime): List<AddedProducts>
+
 }

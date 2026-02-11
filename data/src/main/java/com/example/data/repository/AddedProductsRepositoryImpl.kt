@@ -38,4 +38,13 @@ class AddedProductsRepositoryImpl(
     override suspend fun deleteAddedProductById(id: Long) {
         val entity = addedProductsDao.deleteById(id)
     }
+
+    override suspend fun getProductsInDateRange(
+        userId: Long,
+        from: LocalDateTime,
+        to: LocalDateTime
+    ): List<AddedProducts> {
+        return addedProductsDao.getAddedProductsByUserIdInRange(userId, from, to)
+            .map { it.toDomain() }
+    }
 }

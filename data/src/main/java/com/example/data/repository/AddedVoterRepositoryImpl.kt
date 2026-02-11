@@ -38,4 +38,13 @@ class AddedVoterRepositoryImpl(
     override suspend fun deleteAddedVoterById(id: Long) {
         addedVoterDao.deleteById(id)
     }
+
+    override suspend fun getVotersInDateRange(
+        userId: Long,
+        from: LocalDateTime,
+        to: LocalDateTime
+    ): List<AddedVoter> {
+        return addedVoterDao.getAddedVoterByUserIdInRange(userId, from, to)
+            .map { it.toDomain() }
+    }
 }

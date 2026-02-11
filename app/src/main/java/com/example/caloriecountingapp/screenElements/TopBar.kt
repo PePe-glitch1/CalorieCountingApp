@@ -35,13 +35,12 @@ val Kurale_reg = FontFamily(
     Font(R.font.kurale_regular, FontWeight.Normal)
 )
 
+@Preview
 @Composable
 fun TopBar() {
     val userViewModel: UserViewModel = hiltViewModel()
 
     val user by userViewModel.user.collectAsStateWithLifecycle()
-
-    var username by remember { mutableStateOf("") }
 
     Card(
         modifier = Modifier
@@ -70,33 +69,25 @@ fun TopBar() {
                 Spacer(Modifier.width(12.dp))
                 Column{
                     Text(
-                        text = user?.username ?: "Username",
-                        fontSize = 19.sp,
+                        text = "Welcome back!",
+                        color = Color.Gray,
+                        fontSize = 13.sp,
                         fontFamily = Kurale_reg,
                     )
 
                     Text(
-                        text = "-day Plan Streak",
-                        color = Color.Gray,
-                        fontSize = 13.sp,
+                        text = user?.username ?: "Username",
+                        fontSize = 19.sp,
                         fontFamily = Kurale_reg,
                     )
                 }
             }
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Image(
-                    painter = painterResource(id = R.drawable.ic_finder),
-                    contentDescription = "finder",
-                    modifier = Modifier
-                        .size(20.dp)
-                        .clickable { Log.d("TopBar", "Finder image clicked") }
-                )
-                Spacer(Modifier.width(16.dp))
-                Image(
                     painter = painterResource(id = R.drawable.ic_notification_false),
                     contentDescription = "notification",
                     modifier = Modifier
-                        .size(21.dp)
+                        .size(28.dp)
                         .clickable { Log.d("TopBar", "Notification image clicked") }
                 )
             }

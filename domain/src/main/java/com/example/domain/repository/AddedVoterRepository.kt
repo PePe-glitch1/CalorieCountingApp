@@ -15,4 +15,6 @@ interface AddedVoterRepository {
 
     suspend fun deleteAddedVoterById(id: Long)
 
+    suspend fun getVotersInDateRange(userId: Long, from: LocalDateTime, to: LocalDateTime): List<AddedVoter>
+
 }

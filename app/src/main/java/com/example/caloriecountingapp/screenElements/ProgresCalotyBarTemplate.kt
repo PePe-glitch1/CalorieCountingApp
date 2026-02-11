@@ -31,7 +31,9 @@ import kotlin.math.sin
 @Composable
 fun ProgressBar() {
 
-    var progress by remember { mutableStateOf(0.25f) }
+    val progresss = 2000f/2560f
+
+    var progress by remember { mutableStateOf(progresss) }
 
     Box(
         contentAlignment = Alignment.Center,
@@ -48,8 +50,17 @@ fun ProgressBar() {
             // Радіус кола
             val radius = (size.minDimension / 2)
 
+            val endAngle = 180f + (180f * progress)
+
+            // Переводимо в радіани
+            val angleInRadians = Math.toRadians(endAngle.toDouble())
+
+            // Знаходимо координати точки на колі
+            val dotX = centerX + radius * cos(angleInRadians).toFloat()
+            val dotY = centerY + radius * sin(angleInRadians).toFloat()
+
             drawArc(
-                color = Color.Gray,
+                color = Color(0xFFF4D7CF),
                 startAngle = 180f,
                 sweepAngle = 180f,
                 useCenter = false,
@@ -60,12 +71,7 @@ fun ProgressBar() {
             )
 
             drawArc(
-                brush = Brush.sweepGradient(
-                    colors = listOf(
-                        Color(0xFF00C9FF),
-                        Color(0xFF92FE9D)
-                    )
-                ),
+                color = Color(0xFFF47551),
                 startAngle = 180f,
                 sweepAngle = 180f * progress,
                 useCenter = false,
@@ -75,21 +81,11 @@ fun ProgressBar() {
                 )
             )
 
-            val endAngle = 180f + (180f * progress)
-
-            // Переводимо в радіани
-            val angleInRadians = Math.toRadians(endAngle.toDouble())
-
-            // Знаходимо координати точки на колі
-            val dotX = centerX + radius * cos(angleInRadians).toFloat()
-            val dotY = centerY + radius * sin(angleInRadians).toFloat()
-
             drawCircle(
-                color = Color.White,      // Білий кружок
-                radius = 25f,             // Розмір кружка
+                color = Color.White,
+                radius = 25f,
                 center = Offset(dotX, dotY)
             )
-
         }
         Text(
             text = "${(progress * 100).toInt()}%",

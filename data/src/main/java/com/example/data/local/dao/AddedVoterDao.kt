@@ -24,4 +24,7 @@ interface AddedVoterDao {
     @Query("DELETE FROM added_voter WHERE added_voter_id = :id")
     suspend fun deleteById(id: Long)
 
+    @Query("SELECT * FROM added_voter WHERE user_id = :userId AND date BETWEEN :from AND :to")
+    suspend fun getAddedVoterByUserIdInRange(userId: Long, from: LocalDateTime, to: LocalDateTime): List<AddedVoterEntity>
+
 }

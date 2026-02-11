@@ -24,4 +24,7 @@ interface AddedProductsDao {
     @Query("DELETE FROM added_products WHERE added_products_id = :id")
     suspend fun deleteById(id: Long)
 
+    @Query("SELECT * FROM added_products WHERE user_id = :userId AND date BETWEEN :from AND :to")
+    suspend fun getAddedProductsByUserIdInRange(userId: Long, from: LocalDateTime, to: LocalDateTime): List<AddedProductsEntity>
+
 }
