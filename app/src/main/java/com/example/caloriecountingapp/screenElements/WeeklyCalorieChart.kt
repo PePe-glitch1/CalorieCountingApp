@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -31,8 +32,10 @@ import androidx.compose.ui.graphics.drawscope.Fill
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.nativeCanvas
 import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import kotlin.math.abs
 
 data class DayNutrition(
@@ -89,10 +92,10 @@ fun WeeklyCalorieChart(
     Canvas(
         modifier = modifier
             .fillMaxWidth()
-            .height(340.dp)
+            .height(280.dp)
             .background(Color.White, RoundedCornerShape(16.dp))
-            .padding(top = 16.dp, bottom = 8.dp)
-            .pointerInput(displayData) {
+            .padding(top = 8.dp, bottom = 8.dp)
+                .pointerInput(displayData) {
                 detectTapGestures { offset ->
                     val paddingLeft = size.width * 0.12f
                     val paddingRight = size.width * 0.05f
@@ -114,9 +117,10 @@ fun WeeklyCalorieChart(
                 }
             }
     ) {
+
         val paddingLeft = size.width * 0.12f
         val paddingRight = size.width * 0.05f
-        val paddingTop = size.height * 0.22f
+        val paddingTop = size.height * 0.08f
         val paddingBottom = size.height * 0.12f
 
         val chartWidth = size.width - paddingLeft - paddingRight
@@ -520,7 +524,7 @@ fun WeeklyCalorieChartPreview() {
         modifier = Modifier
             .fillMaxWidth()
             .background(Color(0xFFFFFFFF))
-            .padding(start = 5.dp, end = 10.dp)
+            .padding(start = 5.dp, end = 5.dp)
     ) {
         WeeklyCalorieChart(
             data = sampleData,

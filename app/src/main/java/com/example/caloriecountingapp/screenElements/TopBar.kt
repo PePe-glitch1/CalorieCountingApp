@@ -34,6 +34,10 @@ import com.example.caloriecountingapp.viewModels.UserViewModel
 val Kurale_reg = FontFamily(
     Font(R.font.kurale_regular, FontWeight.Normal)
 )
+val Sans_reg = FontFamily(
+    Font(R.font.sans_regular, FontWeight.Normal)
+)
+
 
 @Preview
 @Composable
@@ -69,15 +73,14 @@ fun TopBar() {
                 Spacer(Modifier.width(12.dp))
                 Column{
                     Text(
+                        text = user?.username ?: "Username",
+                        fontSize = 19.sp,
+                        fontFamily = Kurale_reg,
+                    )
+                    Text(
                         text = "Welcome back!",
                         color = Color.Gray,
                         fontSize = 13.sp,
-                        fontFamily = Kurale_reg,
-                    )
-
-                    Text(
-                        text = user?.username ?: "Username",
-                        fontSize = 19.sp,
                         fontFamily = Kurale_reg,
                     )
                 }
