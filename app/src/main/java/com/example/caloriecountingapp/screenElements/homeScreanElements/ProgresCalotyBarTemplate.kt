@@ -1,4 +1,4 @@
-package com.example.caloriecountingapp.screenElements
+package com.example.caloriecountingapp.screenElements.homeScreanElements
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.Box
@@ -32,14 +32,13 @@ fun ProgressBar(
         (currentCalories.toFloat() / maxCalories.toFloat()).coerceIn(0f, 1f)
     } else 0f
 
-    // Outer box constrains the visible height
     Box(
         modifier = Modifier
             .fillMaxWidth()
             .height(150.dp),
         contentAlignment = Alignment.TopCenter
     ) {
-        // Inner square box guarantees square canvas
+
         Box(
             modifier = Modifier.requiredSize(224.dp),
             contentAlignment = Alignment.Center
@@ -54,7 +53,6 @@ fun ProgressBar(
                 val dotX = centerX + radius * cos(angleInRadians).toFloat()
                 val dotY = centerY + radius * sin(angleInRadians).toFloat()
 
-                // Background arc
                 drawArc(
                     color = Color(0xFFF4D7CF),
                     startAngle = 180f,
@@ -63,7 +61,6 @@ fun ProgressBar(
                     style = Stroke(width = 80f, cap = StrokeCap.Round),
                 )
 
-                // Progress arc
                 drawArc(
                     color = Color(0xFFF47551),
                     startAngle = 180f,
@@ -72,7 +69,6 @@ fun ProgressBar(
                     style = Stroke(width = 80f, cap = StrokeCap.Round)
                 )
 
-                // Indicator dot
                 drawCircle(
                     color = Color.White,
                     radius = 25f,
@@ -80,7 +76,6 @@ fun ProgressBar(
                 )
             }
 
-            // Text overlay at center of the circle (bottom of arc)
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {

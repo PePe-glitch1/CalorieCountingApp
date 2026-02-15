@@ -17,13 +17,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.caloriecountingapp.screenElements.AddButton
-import com.example.caloriecountingapp.screenElements.BottomBar
-import com.example.caloriecountingapp.screenElements.DayNutrition
-import com.example.caloriecountingapp.screenElements.ProgressBFG
-import com.example.caloriecountingapp.screenElements.ProgressBar
-import com.example.caloriecountingapp.screenElements.TopBar
-import com.example.caloriecountingapp.screenElements.WeeklyCalorieChart
+import com.example.caloriecountingapp.screenElements.homeScreanElements.AddButton
+import com.example.caloriecountingapp.screenElements.homeScreanElements.BottomBar
+import com.example.caloriecountingapp.screenElements.homeScreanElements.DayNutrition
+import com.example.caloriecountingapp.screenElements.homeScreanElements.ProgressBFG
+import com.example.caloriecountingapp.screenElements.homeScreanElements.ProgressBar
+import com.example.caloriecountingapp.screenElements.homeScreanElements.TopBar
+import com.example.caloriecountingapp.screenElements.homeScreanElements.WeeklyCalorieChart
 
 @Preview
 @Composable

@@ -1,4 +1,4 @@
-package com.example.caloriecountingapp.screenElements
+package com.example.caloriecountingapp.screenElements.homeScreanElements
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.Arrangement

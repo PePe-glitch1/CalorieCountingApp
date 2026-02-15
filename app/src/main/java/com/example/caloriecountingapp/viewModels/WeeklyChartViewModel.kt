@@ -3,7 +3,7 @@ package com.example.caloriecountingapp.viewModels
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.caloriecountingapp.screenElements.DayNutrition
+import com.example.caloriecountingapp.screenElements.homeScreanElements.DayNutrition
 import com.example.domain.repository.AddedProductsRepository
 import com.example.domain.repository.AddedVoterRepository
 import dagger.hilt.android.lifecycle.HiltViewModel

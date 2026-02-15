@@ -1,4 +1,4 @@
-package com.example.caloriecountingapp.screenElements
+package com.example.caloriecountingapp.screenElements.homeScreanElements
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer

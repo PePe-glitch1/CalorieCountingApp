@@ -1,15 +1,15 @@
-package com.example.caloriecountingapp.screenElements
+package com.example.caloriecountingapp.screenElements.homeScreanElements
 
+import android.graphics.Paint
+import android.graphics.Typeface
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.detectTapGestures
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -32,10 +32,8 @@ import androidx.compose.ui.graphics.drawscope.Fill
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.nativeCanvas
 import androidx.compose.ui.input.pointer.pointerInput
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import kotlin.math.abs
 
 data class DayNutrition(
@@ -60,7 +58,6 @@ fun WeeklyCalorieChart(
     val gradientBottom = Color(0x05E88B78)
     val gridColor = Color(0xFFCCCCCC)
 
-    // Water curve colors
     val waterLineColor = Color(0xFF5B9BD5)
     val waterGradientTop = Color(0x355B9BD5)
     val waterGradientBottom = Color(0x055B9BD5)
@@ -127,11 +124,11 @@ fun WeeklyCalorieChart(
         val chartHeight = size.height - paddingTop - paddingBottom
 
         // Draw Y-axis labels and horizontal grid lines
-        val textPaint = android.graphics.Paint().apply {
+        val textPaint = Paint().apply {
             color = 0xFF9E9E9E.toInt()
             textSize = 32f
             isAntiAlias = true
-            textAlign = android.graphics.Paint.Align.RIGHT
+            textAlign = Paint.Align.RIGHT
         }
 
         yLabels.forEach { value ->
@@ -270,14 +267,14 @@ fun WeeklyCalorieChart(
         }
 
         // Draw X-axis day labels
-        val dayTextPaint = android.graphics.Paint().apply {
+        val dayTextPaint = Paint().apply {
             color = 0xFF9E9E9E.toInt()
             textSize = 36f
             isAntiAlias = true
-            textAlign = android.graphics.Paint.Align.CENTER
-            typeface = android.graphics.Typeface.create(
-                android.graphics.Typeface.DEFAULT,
-                android.graphics.Typeface.BOLD
+            textAlign = Paint.Align.CENTER
+            typeface = Typeface.create(
+                Typeface.DEFAULT,
+                Typeface.BOLD
             )
         }
 
@@ -294,14 +291,14 @@ fun WeeklyCalorieChart(
                     center = Offset(x, xAxisY - 4f)
                 )
                 // White text for selected day
-                val selectedDayPaint = android.graphics.Paint().apply {
+                val selectedDayPaint = Paint().apply {
                     color = 0xFFFFFFFF.toInt()
                     textSize = 36f
                     isAntiAlias = true
-                    textAlign = android.graphics.Paint.Align.CENTER
-                    typeface = android.graphics.Typeface.create(
-                        android.graphics.Typeface.DEFAULT,
-                        android.graphics.Typeface.BOLD
+                    textAlign = Paint.Align.CENTER
+                    typeface = Typeface.create(
+                        Typeface.DEFAULT,
+                        Typeface.BOLD
                     )
                 }
                 drawContext.canvas.nativeCanvas.drawText(
@@ -453,25 +450,25 @@ private fun DrawScope.drawTooltip(
     )
 
     // Draw text inside tooltip
-    val labelPaint = android.graphics.Paint().apply {
+    val labelPaint = Paint().apply {
         color = 0xFFFFFFFF.toInt()
         textSize = 30f
         isAntiAlias = true
-        textAlign = android.graphics.Paint.Align.LEFT
-        typeface = android.graphics.Typeface.create(
-            android.graphics.Typeface.DEFAULT,
-            android.graphics.Typeface.NORMAL
+        textAlign = Paint.Align.LEFT
+        typeface = Typeface.create(
+            Typeface.DEFAULT,
+            Typeface.NORMAL
         )
     }
 
-    val valuePaint = android.graphics.Paint().apply {
+    val valuePaint = Paint().apply {
         color = 0xFFFFFFFF.toInt()
         textSize = 30f
         isAntiAlias = true
-        textAlign = android.graphics.Paint.Align.RIGHT
-        typeface = android.graphics.Typeface.create(
-            android.graphics.Typeface.DEFAULT,
-            android.graphics.Typeface.BOLD
+        textAlign = Paint.Align.RIGHT
+        typeface = Typeface.create(
+            Typeface.DEFAULT,
+            Typeface.BOLD
         )
     }
 
